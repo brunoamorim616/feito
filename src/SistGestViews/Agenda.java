@@ -32,8 +32,9 @@ public class Agenda extends javax.swing.JPanel {
     public Agenda() {
         initComponents();
         
-        this.add(painelEdicao, "painelAgenda");
-        this.add(painelAgenda, "painelEdicao");
+        this.add(painelEdicao, "painelEdicao");
+        this.add(painelAgenda, "painelAgenda");
+        this.add(painelListagemAgenda, "painelListagemAgenda");
         
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelAgenda");
@@ -102,6 +103,7 @@ public class Agenda extends javax.swing.JPanel {
         cpDataCriaEditado = new javax.swing.JFormattedTextField();
         labelDataCria = new javax.swing.JLabel();
         cpDataComprEditado = new javax.swing.JFormattedTextField();
+        btnListarAgenda = new javax.swing.JButton();
         painelAgenda = new javax.swing.JPanel();
         labelEndereco1 = new javax.swing.JLabel();
         btnSalvar1 = new javax.swing.JButton();
@@ -120,7 +122,7 @@ public class Agenda extends javax.swing.JPanel {
 
         labelEndereco.setText("Data Compromisso:");
 
-        btnEditar.setText("Salvar");
+        btnEditar.setText("Adcionar");
 
         cpTituloEditado.setText("Digite o Título aqui...");
 
@@ -146,23 +148,17 @@ public class Agenda extends javax.swing.JPanel {
             ex.printStackTrace();
         }
 
+        btnListarAgenda.setText("Listar Agenda");
+        btnListarAgenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarAgendaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelEdicaoLayout = new javax.swing.GroupLayout(painelEdicao);
         painelEdicao.setLayout(painelEdicaoLayout);
         painelEdicaoLayout.setHorizontalGroup(
             painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdicaoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelCadastroCliente)
-                    .addGroup(painelEdicaoLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdicaoLayout.createSequentialGroup()
-                                .addComponent(btnEditar)
-                                .addGap(146, 146, 146))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdicaoLayout.createSequentialGroup()
-                                .addComponent(cpTituloEditado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(124, 124, 124))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdicaoLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -176,6 +172,20 @@ public class Agenda extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cpDataComprEditado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdicaoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(labelCadastroCliente)
+                        .addGroup(painelEdicaoLayout.createSequentialGroup()
+                            .addGap(29, 29, 29)
+                            .addComponent(cpTituloEditado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(124, 124, 124)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdicaoLayout.createSequentialGroup()
+                        .addComponent(btnListarAgenda)
+                        .addGap(34, 34, 34)
+                        .addComponent(btnEditar)
+                        .addGap(74, 74, 74))))
         );
         painelEdicaoLayout.setVerticalGroup(
             painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,7 +203,9 @@ public class Agenda extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEditar)
+                .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEditar)
+                    .addComponent(btnListarAgenda))
                 .addGap(22, 22, 22))
         );
 
@@ -347,9 +359,14 @@ public class Agenda extends javax.swing.JPanel {
        this.popularTabela();
     }//GEN-LAST:event_tblAgendaComponentShown
 
+    private void btnListarAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarAgendaActionPerformed
+        cl.show(this, "painelListagemAgenda");
+    }//GEN-LAST:event_btnListarAgendaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnListarAgenda;
     private javax.swing.JButton btnSalvar1;
     private javax.swing.JFormattedTextField cpDataCompr1;
     private javax.swing.JFormattedTextField cpDataComprEditado;
