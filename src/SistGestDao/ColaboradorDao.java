@@ -44,7 +44,7 @@ public class ColaboradorDao extends ConnectionFactory {
         }
     }
 
-    public Colaborador getColaboradorLogin(String usuario, String senha) throws SQLException {
+    public Colaborador getColaborador(String usuario, String senha) throws SQLException {
         String sql = "select * from colaborador where usuario = ? and senha = ?";
 
         Colaborador c = null;
@@ -77,7 +77,7 @@ public class ColaboradorDao extends ConnectionFactory {
 
     }
     
-    public Colaborador getColaboradorListagem(int idColaborador) throws SQLException {
+    public Colaborador getColaborador(int idColaborador) throws SQLException {
         String sql = "select * from colaborador where usuario = ? and senha = ?";
 
         Colaborador c = null;

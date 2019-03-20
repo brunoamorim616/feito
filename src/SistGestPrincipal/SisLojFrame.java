@@ -395,7 +395,7 @@ public class SisLojFrame extends javax.swing.JFrame {
         
         Colaborador c;
         try {
-            c = colDao.getColaboradorLogin(loginAux, senhaAux);
+            c = colDao.getColaborador(loginAux, senhaAux);
             
             if(c == null){
                 String mensagem = "Senha ou usuario Incorretos";

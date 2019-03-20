@@ -1,7 +1,7 @@
 
 package SistGestModelo;
 
-public class Compromisso {
+public class Agenda {
     private String dataCriacao;
     private String dataCompromisso;
     private String titulo;

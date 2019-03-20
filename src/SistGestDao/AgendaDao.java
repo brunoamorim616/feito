@@ -2,7 +2,7 @@
 package SistGestDao;
 
 import SistGestDao.ConnectionFactory;
-import SistGestModelo.Compromisso;
+import SistGestModelo.Agenda;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +17,7 @@ public class AgendaDao extends ConnectionFactory  {
         this.con = this.getConnection();
     }
 
-    public void inserir(Compromisso comp) throws SQLException {
+    public void inserir(Agenda comp) throws SQLException {
 
         String sql = "insert into agenda "
                 + "(dataCriacao, dataCompromisso, titulo, descricao, colaborador_id, equipe_id) "
@@ -53,7 +53,7 @@ public class AgendaDao extends ConnectionFactory  {
 
     }
 
-    public void alterar(Compromisso comp) throws SQLException {
+    public void alterar(Agenda comp) throws SQLException {
 
         String sql2 = "insert into agenda "
                 + "(dataCriacao, dataCompromisso, "
@@ -77,17 +77,17 @@ public class AgendaDao extends ConnectionFactory  {
 
     }
 
-    public List<Compromisso> listaCompromisso() throws SQLException {
+    public List<Agenda> listaCompromisso() throws SQLException {
         String sql = "select * from agenda";
-        List<Compromisso> clientes = null;
+        List<Agenda> clientes = null;
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
             ResultSet rs = st.executeQuery();
 
-            clientes = new ArrayList<Compromisso>();
+            clientes = new ArrayList<Agenda>();
 
             while (rs.next()) {
-                Compromisso c = new Compromisso();
+                Agenda c = new Agenda();
                 c.setDataCriacao(rs.getString("dataCriacao"));
                 c.setDataCompromisso(rs.getString("dataCompromisso"));
                 c.setTitulo(rs.getString("titulo"));
@@ -107,15 +107,15 @@ public class AgendaDao extends ConnectionFactory  {
         return clientes;
     }
 
-    public Compromisso getCompromisso(int colaborador_id) throws SQLException {
+    public Agenda getCompromisso(int colaborador_id) throws SQLException {
         String sql = "select * from cliente where codcli = ?";
-        Compromisso compr = null;
+        Agenda compr = null;
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
             st.setInt(1, colaborador_id);
             try (ResultSet rs = st.executeQuery()) {
                 if (rs.next()) {
-                    compr = new Compromisso();
+                    compr = new Agenda();
                     compr.setDataCriacao(rs.getString("dataCriacao"));
                     compr.setDataCompromisso(rs.getString("dataCompromisso"));
                     compr.setTitulo(rs.getString("titulo"));

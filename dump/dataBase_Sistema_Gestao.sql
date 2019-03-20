@@ -108,6 +108,36 @@ LOCK TABLES `equipe` WRITE;
 INSERT INTO `equipe` VALUES (1,'Contabilidade','Responsável por operações monetárias em geral da empresa.'),(2,'Adm','Administracao');
 /*!40000 ALTER TABLE `equipe` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tarefa`
+--
+
+DROP TABLE IF EXISTS `tarefa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tarefa` (
+  `idTarefa` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(100) NOT NULL,
+  `descricao` varchar(150) NOT NULL,
+  `equipe_id` int(11) NOT NULL,
+  `colaborador_id` int(4) NOT NULL,
+  PRIMARY KEY (`idTarefa`),
+  KEY `equipe_id` (`equipe_id`),
+  KEY `colaborador_id` (`colaborador_id`),
+  CONSTRAINT `tarefa_ibfk_1` FOREIGN KEY (`equipe_id`) REFERENCES `equipe` (`id`),
+  CONSTRAINT `tarefa_ibfk_2` FOREIGN KEY (`colaborador_id`) REFERENCES `colaborador` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tarefa`
+--
+
+LOCK TABLES `tarefa` WRITE;
+/*!40000 ALTER TABLE `tarefa` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tarefa` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -118,4 +148,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-14 18:48:41
+-- Dump completed on 2019-03-20 18:42:16
