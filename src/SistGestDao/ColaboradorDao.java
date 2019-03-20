@@ -78,7 +78,7 @@ public class ColaboradorDao extends ConnectionFactory {
     }
     
     public Colaborador getColaborador(int idColaborador) throws SQLException {
-        String sql = "select * from colaborador where usuario = ? and senha = ?";
+        String sql = "select * from colaborador where id = ?";
 
         Colaborador c = null;
 
@@ -183,7 +183,7 @@ public class ColaboradorDao extends ConnectionFactory {
         String sql = "delete from colaborador where id = ?";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
-            st.setInt(1, id);
+            st.setInt(1,id);
             st.execute();
             st.close();
         }

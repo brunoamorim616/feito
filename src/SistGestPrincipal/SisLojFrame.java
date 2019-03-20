@@ -28,6 +28,8 @@ import static sun.security.jgss.GSSUtil.login;
 public class SisLojFrame extends javax.swing.JFrame {
     
     int IdColaborador;
+    Colaborador c;
+    private int idColaborador;
     
     /**
      * Creates new form SisLojFrame
@@ -73,13 +75,6 @@ public class SisLojFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         PainelPrincipal = new javax.swing.JPanel();
-        loginPrincipal = new javax.swing.JPanel();
-        labelUsuario2 = new javax.swing.JLabel();
-        labelSenha2 = new javax.swing.JLabel();
-        cpUsuario2 = new javax.swing.JTextField();
-        labelLogin = new javax.swing.JLabel();
-        cpSenha = new javax.swing.JTextField();
-        btnLogin = new javax.swing.JButton();
         menuColaborador = new javax.swing.JPanel();
         btnAgendaColaborador1 = new javax.swing.JButton();
         lbAgenda1 = new javax.swing.JLabel();
@@ -91,9 +86,7 @@ public class SisLojFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnListaComproCol = new javax.swing.JButton();
         menuAdministrador = new javax.swing.JPanel();
-        btnEditarColaborador = new javax.swing.JButton();
         lbTarefa = new javax.swing.JLabel();
-        btnEliminarColaborador = new javax.swing.JButton();
         btnAdicionarTarefa = new javax.swing.JButton();
         btnEliminarTarefa = new javax.swing.JButton();
         btnEditarTarefa = new javax.swing.JButton();
@@ -110,7 +103,13 @@ public class SisLojFrame extends javax.swing.JFrame {
         btnEliminarEquipe = new javax.swing.JButton();
         btnCadastrarColaborador = new javax.swing.JButton();
         btnListarEquipe = new javax.swing.JButton();
-        btnListaComproAdm = new javax.swing.JButton();
+        loginPrincipal = new javax.swing.JPanel();
+        labelUsuario2 = new javax.swing.JLabel();
+        labelSenha2 = new javax.swing.JLabel();
+        cpUsuario2 = new javax.swing.JTextField();
+        labelLogin = new javax.swing.JLabel();
+        cpSenha = new javax.swing.JTextField();
+        btnLogin = new javax.swing.JButton();
         barraDeMenu = new javax.swing.JMenuBar();
         opcaoVoltar = new javax.swing.JMenu();
         voltar = new javax.swing.JMenuItem();
@@ -120,71 +119,6 @@ public class SisLojFrame extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(800, 500));
 
         PainelPrincipal.setLayout(new java.awt.CardLayout());
-
-        labelUsuario2.setText("Usuário:");
-
-        labelSenha2.setText("Senha:");
-
-        cpUsuario2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cpUsuario2ActionPerformed(evt);
-            }
-        });
-
-        labelLogin.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        labelLogin.setText("Login");
-
-        cpSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cpSenhaActionPerformed(evt);
-            }
-        });
-
-        btnLogin.setText("Login");
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout loginPrincipalLayout = new javax.swing.GroupLayout(loginPrincipal);
-        loginPrincipal.setLayout(loginPrincipalLayout);
-        loginPrincipalLayout.setHorizontalGroup(
-            loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPrincipalLayout.createSequentialGroup()
-                .addGap(0, 96, Short.MAX_VALUE)
-                .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnLogin)
-                    .addComponent(labelLogin)
-                    .addGroup(loginPrincipalLayout.createSequentialGroup()
-                        .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelSenha2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelUsuario2, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cpUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cpSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(152, 152, 152))
-        );
-        loginPrincipalLayout.setVerticalGroup(
-            loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPrincipalLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(labelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cpUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelUsuario2))
-                .addGap(18, 18, 18)
-                .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cpSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelSenha2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                .addComponent(btnLogin)
-                .addGap(85, 85, 85))
-        );
-
-        PainelPrincipal.add(loginPrincipal, "card3");
 
         btnAgendaColaborador1.setText("Agenda Colaborador");
         btnAgendaColaborador1.addActionListener(new java.awt.event.ActionListener() {
@@ -254,7 +188,7 @@ public class SisLojFrame extends javax.swing.JFrame {
             .addGroup(menuColaboradorLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addGroup(menuColaboradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbAgenda1)
                     .addComponent(lbTarefa1))
@@ -275,18 +209,18 @@ public class SisLojFrame extends javax.swing.JFrame {
 
         PainelPrincipal.add(menuColaborador, "card4");
 
-        btnEditarColaborador.setText("Editar");
-
         lbTarefa.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lbTarefa.setText("Tarefas");
-
-        btnEliminarColaborador.setText("Eliminar");
+        menuAdministrador.add(lbTarefa);
 
         btnAdicionarTarefa.setText("Adicionar");
+        menuAdministrador.add(btnAdicionarTarefa);
 
         btnEliminarTarefa.setText("Eliminar");
+        menuAdministrador.add(btnEliminarTarefa);
 
         btnEditarTarefa.setText("Editar");
+        menuAdministrador.add(btnEditarTarefa);
 
         btnListarColaborador.setText("Listar");
         btnListarColaborador.addActionListener(new java.awt.event.ActionListener() {
@@ -294,9 +228,11 @@ public class SisLojFrame extends javax.swing.JFrame {
                 btnListarColaboradorActionPerformed(evt);
             }
         });
+        menuAdministrador.add(btnListarColaborador);
 
         lbAgenda.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lbAgenda.setText("Agenda");
+        menuAdministrador.add(lbAgenda);
 
         btnAgendaColaborador.setText("Agenda Colaborador");
         btnAgendaColaborador.addActionListener(new java.awt.event.ActionListener() {
@@ -304,23 +240,32 @@ public class SisLojFrame extends javax.swing.JFrame {
                 btnAgendaColaboradorActionPerformed(evt);
             }
         });
+        menuAdministrador.add(btnAgendaColaborador);
 
         btnAgendaEquipe.setText("Agenda Equipe");
+        menuAdministrador.add(btnAgendaEquipe);
 
         lbEquipe.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lbEquipe.setText("Equipe");
+        menuAdministrador.add(lbEquipe);
 
         lbSistema.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbSistema.setText("Menu");
+        menuAdministrador.add(lbSistema);
 
         BtnCadastrarEquipe.setText("Cadastrar");
+        menuAdministrador.add(BtnCadastrarEquipe);
+        menuAdministrador.add(jSeparator1);
 
         btnEditarEquipe.setText("Editar");
+        menuAdministrador.add(btnEditarEquipe);
 
         lbColaborador.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lbColaborador.setText("Colaborador");
+        menuAdministrador.add(lbColaborador);
 
         btnEliminarEquipe.setText("Eliminar");
+        menuAdministrador.add(btnEliminarEquipe);
 
         btnCadastrarColaborador.setText("Cadastrar");
         btnCadastrarColaborador.addActionListener(new java.awt.event.ActionListener() {
@@ -328,138 +273,85 @@ public class SisLojFrame extends javax.swing.JFrame {
                 btnCadastrarColaboradorActionPerformed(evt);
             }
         });
+        menuAdministrador.add(btnCadastrarColaborador);
 
         btnListarEquipe.setText("Listar");
-
-        btnListaComproAdm.setText("Listar Compromissos");
-        btnListaComproAdm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListaComproAdmActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout menuAdministradorLayout = new javax.swing.GroupLayout(menuAdministrador);
-        menuAdministrador.setLayout(menuAdministradorLayout);
-        menuAdministradorLayout.setHorizontalGroup(
-            menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuAdministradorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAdministradorLayout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
-                        .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(menuAdministradorLayout.createSequentialGroup()
-                                .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(menuAdministradorLayout.createSequentialGroup()
-                                        .addComponent(lbColaborador)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
-                                        .addComponent(BtnCadastrarEquipe))
-                                    .addGroup(menuAdministradorLayout.createSequentialGroup()
-                                        .addComponent(btnCadastrarColaborador)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnEditarEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(31, 31, 31))
-                            .addGroup(menuAdministradorLayout.createSequentialGroup()
-                                .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(btnListarColaborador, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnEliminarColaborador, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnEditarColaborador, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnAdicionarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnEditarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnEliminarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(menuAdministradorLayout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(lbTarefa)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAdministradorLayout.createSequentialGroup()
-                                        .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbAgenda)
-                                            .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(btnEliminarEquipe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(btnListarEquipe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(31, 31, 31))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAdministradorLayout.createSequentialGroup()
-                                        .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(btnAgendaEquipe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnAgendaColaborador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(18, 18, 18))
-                                    .addGroup(menuAdministradorLayout.createSequentialGroup()
-                                        .addComponent(btnListaComproAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap())))))
-                    .addGroup(menuAdministradorLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lbEquipe)
-                        .addGap(44, 44, 44))))
-            .addGroup(menuAdministradorLayout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(lbSistema)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        menuAdministradorLayout.setVerticalGroup(
-            menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAdministradorLayout.createSequentialGroup()
-                .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuAdministradorLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbSistema)
-                        .addGap(32, 32, 32)
-                        .addComponent(lbColaborador)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(menuAdministradorLayout.createSequentialGroup()
-                                .addComponent(btnEditarEquipe)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEliminarEquipe))
-                            .addGroup(menuAdministradorLayout.createSequentialGroup()
-                                .addComponent(btnCadastrarColaborador)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEditarColaborador))))
-                    .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(menuAdministradorLayout.createSequentialGroup()
-                            .addGap(87, 87, 87)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(35, 35, 35))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAdministradorLayout.createSequentialGroup()
-                            .addContainerGap(46, Short.MAX_VALUE)
-                            .addComponent(lbEquipe)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(BtnCadastrarEquipe)
-                            .addGap(30, 30, 30))))
-                .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuAdministradorLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(btnListarEquipe)
-                        .addGap(20, 20, 20)
-                        .addComponent(lbAgenda)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAgendaColaborador)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAgendaEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnListaComproAdm)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(menuAdministradorLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminarColaborador)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnListarColaborador)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbTarefa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAdicionarTarefa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditarTarefa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEliminarTarefa)
-                        .addGap(28, 28, 28))))
-        );
+        menuAdministrador.add(btnListarEquipe);
 
         PainelPrincipal.add(menuAdministrador, "card2");
 
+        labelUsuario2.setText("Usuário:");
+
+        labelSenha2.setText("Senha:");
+
+        cpUsuario2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpUsuario2ActionPerformed(evt);
+            }
+        });
+
+        labelLogin.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        labelLogin.setText("Login");
+
+        cpSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpSenhaActionPerformed(evt);
+            }
+        });
+
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout loginPrincipalLayout = new javax.swing.GroupLayout(loginPrincipal);
+        loginPrincipal.setLayout(loginPrincipalLayout);
+        loginPrincipalLayout.setHorizontalGroup(
+            loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPrincipalLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelLogin)
+                .addGap(72, 72, 72))
+            .addGroup(loginPrincipalLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelSenha2)
+                    .addComponent(labelUsuario2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cpUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLogin))
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+        loginPrincipalLayout.setVerticalGroup(
+            loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPrincipalLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(labelLogin)
+                .addGap(40, 40, 40)
+                .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelUsuario2)
+                    .addComponent(cpUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cpSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelSenha2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(btnLogin)
+                .addGap(86, 86, 86))
+        );
+
+        PainelPrincipal.add(loginPrincipal, "card3");
+
         opcaoVoltar.setText("VOLTAR PARA");
+        opcaoVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcaoVoltarActionPerformed(evt);
+            }
+        });
 
         voltar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
         voltar.setText("MENU");
@@ -489,8 +381,21 @@ public class SisLojFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        ColaboradorDao colDao = new ColaboradorDao();
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-        cl.show(PainelPrincipal, "menuPrincipal");
+        Colaborador c;
+            try {
+            c = colDao.getColaborador(idColaborador);
+            
+            String aux = c.getTipo();
+            if(aux.equals("1")){
+            
+                    cl.show(this.PainelPrincipal, "menuColaborador");
+                }else{
+                    cl.show(this.PainelPrincipal, "menuAdministrador");
+                } catch (SQLException ex) {
+                Logger.getLogger(SisLojFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_voltarActionPerformed
 
     private void cpUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpUsuario2ActionPerformed
@@ -570,6 +475,10 @@ public class SisLojFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnListaComproAdmActionPerformed
 
+    private void opcaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcaoVoltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opcaoVoltarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -616,15 +525,12 @@ public class SisLojFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnAgendaEquipe;
     private javax.swing.JButton btnAgendaEquipe1;
     private javax.swing.JButton btnCadastrarColaborador;
-    private javax.swing.JButton btnEditarColaborador;
     private javax.swing.JButton btnEditarEquipe;
     private javax.swing.JButton btnEditarTarefa;
     private javax.swing.JButton btnEditarTarefa1;
-    private javax.swing.JButton btnEliminarColaborador;
     private javax.swing.JButton btnEliminarEquipe;
     private javax.swing.JButton btnEliminarTarefa;
     private javax.swing.JButton btnEliminarTarefa1;
-    private javax.swing.JButton btnListaComproAdm;
     private javax.swing.JButton btnListaComproCol;
     private javax.swing.JButton btnListarColaborador;
     private javax.swing.JButton btnListarEquipe;

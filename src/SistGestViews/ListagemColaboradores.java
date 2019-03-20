@@ -26,6 +26,7 @@ public class ListagemColaboradores extends javax.swing.JPanel {
 
     private CardLayout cl;
     private int idColaborador;
+    private Colaborador colaborador;
 
     public ListagemColaboradores() {
         initComponents();
@@ -72,20 +73,18 @@ public class ListagemColaboradores extends javax.swing.JPanel {
         ColaboradorDao colab = new ColaboradorDao();
 //(usuario, senha, nome, rua, bairro, cep, cidade, estado, telefone, tipo, equipe_id)
         
-            Colaborador colaborador = colab.getColaborador(idColaborador);
+            Colaborador colaborador2 = colab.getColaborador(idColaborador);
             
-            cpEquipeId.setText(""+colaborador.getEquipe_id());
-            cpUsuario.setText(colaborador.getUsuario());
-            cpSenha.setText(colaborador.getSenha());
-            cpBairro.setText(colaborador.getBairro());
-            cpCep.setText(colaborador.getCep());
-            cpCidade.setText(colaborador.getCidade());
-            cpEstado.setText(colaborador.getEstado());
-            cpTelefone.setText(colaborador.getTelefone());
-            cpTipo.setText(colaborador.getTipo());
+            cpEquipeId.setText(""+colaborador2.getEquipe_id());
+            cpUsuario.setText(colaborador2.getUsuario());
+            cpSenha.setText(colaborador2.getSenha());
+            cpBairro.setText(colaborador2.getBairro());
+            cpCep.setText(colaborador2.getCep());
+            cpCidade.setText(colaborador2.getCidade());
+            cpEstado.setText(colaborador2.getEstado());
+            cpTelefone.setText(colaborador2.getTelefone());
+            cpTipo.setText(colaborador2.getTipo());
             
-            
-       
     }
 
     private void limparTabela() {
@@ -420,6 +419,9 @@ public class ListagemColaboradores extends javax.swing.JPanel {
             colDao.alterar(col);
             this.cl.show(this, "painelListagem");
             JOptionPane.showMessageDialog(null, "Colaborador alterado com sucesso !");
+           
+            this.cl.show(this, "painelListagem");
+            
         } catch (SQLException ex) {
             this.cl.show(this, "painelListagem");
             JOptionPane.showMessageDialog(null, "Falha ao alterar o colaborador !");
@@ -432,7 +434,24 @@ public class ListagemColaboradores extends javax.swing.JPanel {
     }//GEN-LAST:event_cpNomeActionPerformed
 
     private void btnEliminarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarColaboradorActionPerformed
-
+        Object[] options = {"Sim", "Não"};
+        int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Deseja realmente eliminar este cliente ?", "Atenção!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+     
+        if (opcaoSelecionada == 0) {
+            
+            ColaboradorDao colabDao = new ColaboradorDao();
+            
+            try {
+                colabDao.eliminar(this.idColaborador);              
+                this.limparTabela();
+                this.popularTabela();
+                this.cl.show(this, "painelListagem");
+                        
+            } catch (SQLException ex) {
+                Logger.getLogger(ListagemColaboradores.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
     }//GEN-LAST:event_btnEliminarColaboradorActionPerformed
 
 
