@@ -8,6 +8,8 @@ package SistGestPrincipal;
 import SistGestDao.ColaboradorDao;
 import SistGestDao.ConnectionFactory;
 import SistGestModelo.Colaborador;
+import SistGestViews.AgendaColaborador;
+import SistGestViews.AgendaEquipe;
 import SistGestViews.CadastroColaborador;
 import SistGestViews.ListagemAgendaColaborador;
 import SistGestViews.CadastroEquipe;
@@ -48,6 +50,9 @@ public class SisLojFrame extends javax.swing.JFrame {
         ListagemColaboradores list = new ListagemColaboradores();
         CadastroEquipe cadeq = new CadastroEquipe();
         ListagemEquipe listeq = new ListagemEquipe();
+        AgendaColaborador agencolab = new AgendaColaborador();
+        AgendaEquipe ageneq = new AgendaEquipe();
+        ListagemAgendaColaborador listAgColab = new ListagemAgendaColaborador();
         
         
 
@@ -59,6 +64,10 @@ public class SisLojFrame extends javax.swing.JFrame {
         PainelPrincipal.add(list, "listagemColab");
         PainelPrincipal.add(cadeq, "cadastrarEquipe");
         PainelPrincipal.add(listeq, "listarEquipe");
+        PainelPrincipal.add(ageneq, "agendaEquipe");
+        PainelPrincipal.add(agencolab, "agendaColaborador");
+        PainelPrincipal.add(listAgColab, "listaAgColab");
+        
         
 
         //Chamar a tela padrão aqui
@@ -96,9 +105,9 @@ public class SisLojFrame extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         lbColaborador = new javax.swing.JLabel();
         btnListarColaborador = new javax.swing.JButton();
-        btnAgendaEquipe = new javax.swing.JButton();
+        btnAgendaEquipeADM = new javax.swing.JButton();
         lbSistema = new javax.swing.JLabel();
-        btnAgendaColaborador = new javax.swing.JButton();
+        btnAgendaColaboradorADM = new javax.swing.JButton();
         btnListarEquipe = new javax.swing.JButton();
         btnCadastrarColaborador = new javax.swing.JButton();
         loginPrincipal = new javax.swing.JPanel();
@@ -129,6 +138,11 @@ public class SisLojFrame extends javax.swing.JFrame {
         lbAgenda1.setText("Agenda");
 
         btnAgendaEquipe1.setText("Agenda Equipe");
+        btnAgendaEquipe1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgendaEquipe1ActionPerformed(evt);
+            }
+        });
 
         btnEliminarTarefa1.setText("Eliminar");
 
@@ -230,15 +244,20 @@ public class SisLojFrame extends javax.swing.JFrame {
             }
         });
 
-        btnAgendaEquipe.setText("Agenda Equipe");
+        btnAgendaEquipeADM.setText("Agenda Equipe");
+        btnAgendaEquipeADM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgendaEquipeADMActionPerformed(evt);
+            }
+        });
 
         lbSistema.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbSistema.setText("Menu");
 
-        btnAgendaColaborador.setText("Agenda Colaborador");
-        btnAgendaColaborador.addActionListener(new java.awt.event.ActionListener() {
+        btnAgendaColaboradorADM.setText("Agenda Colaborador");
+        btnAgendaColaboradorADM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgendaColaboradorActionPerformed(evt);
+                btnAgendaColaboradorADMActionPerformed(evt);
             }
         });
 
@@ -265,8 +284,8 @@ public class SisLojFrame extends javax.swing.JFrame {
                 .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuAdministradorLayout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(btnAgendaEquipe))
-                    .addComponent(btnAgendaColaborador)
+                        .addComponent(btnAgendaEquipeADM))
+                    .addComponent(btnAgendaColaboradorADM)
                     .addGroup(menuAdministradorLayout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(lbAgenda)))
@@ -310,9 +329,9 @@ public class SisLojFrame extends javax.swing.JFrame {
                             .addGroup(menuAdministradorLayout.createSequentialGroup()
                                 .addComponent(lbAgenda)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAgendaEquipe)
+                                .addComponent(btnAgendaEquipeADM)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAgendaColaborador))))
+                                .addComponent(btnAgendaColaboradorADM))))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addComponent(lbEquipe)
@@ -479,10 +498,10 @@ public class SisLojFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void btnAgendaColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaColaboradorActionPerformed
+    private void btnAgendaColaboradorADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaColaboradorADMActionPerformed
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-        cl.show(PainelPrincipal, "agenda");
-    }//GEN-LAST:event_btnAgendaColaboradorActionPerformed
+        cl.show(PainelPrincipal, "agendaColaborador");
+    }//GEN-LAST:event_btnAgendaColaboradorADMActionPerformed
 
     private void btnCadastrarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarColaboradorActionPerformed
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
@@ -495,7 +514,8 @@ public class SisLojFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListarColaboradorActionPerformed
 
     private void btnAgendaColaborador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaColaborador1ActionPerformed
-        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+        cl.show(PainelPrincipal, "agendaColaborador");
     }//GEN-LAST:event_btnAgendaColaborador1ActionPerformed
 
     private void btnAdicionarTarefa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarTarefa1ActionPerformed
@@ -524,6 +544,16 @@ public class SisLojFrame extends javax.swing.JFrame {
        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
        cl.show(PainelPrincipal, "listarEquipe");
     }//GEN-LAST:event_btnListarEquipeActionPerformed
+
+    private void btnAgendaEquipe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaEquipe1ActionPerformed
+       CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+       cl.show(PainelPrincipal, "agendaEquipe");
+    }//GEN-LAST:event_btnAgendaEquipe1ActionPerformed
+
+    private void btnAgendaEquipeADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaEquipeADMActionPerformed
+       CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+       cl.show(PainelPrincipal, "agendaEquipe");
+    }//GEN-LAST:event_btnAgendaEquipeADMActionPerformed
 
     /**
      * @param args the command line arguments
@@ -565,10 +595,10 @@ public class SisLojFrame extends javax.swing.JFrame {
     private javax.swing.JPanel PainelPrincipal;
     private javax.swing.JMenuBar barraDeMenu;
     private javax.swing.JButton btnAdicionarTarefa1;
-    private javax.swing.JButton btnAgendaColaborador;
     private javax.swing.JButton btnAgendaColaborador1;
-    private javax.swing.JButton btnAgendaEquipe;
+    private javax.swing.JButton btnAgendaColaboradorADM;
     private javax.swing.JButton btnAgendaEquipe1;
+    private javax.swing.JButton btnAgendaEquipeADM;
     private javax.swing.JButton btnCadastrarColaborador;
     private javax.swing.JButton btnEditarTarefa1;
     private javax.swing.JButton btnEliminarTarefa1;

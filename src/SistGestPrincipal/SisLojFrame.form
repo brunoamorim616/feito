@@ -160,6 +160,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agenda Equipe"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgendaEquipe1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnEliminarTarefa1">
               <Properties>
@@ -220,9 +223,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                              <Component id="btnAgendaEquipe" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAgendaEquipeADM" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="btnAgendaColaborador" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAgendaColaboradorADM" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                               <Component id="lbAgenda" min="-2" max="-2" attributes="0"/>
@@ -278,9 +281,9 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="lbAgenda" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnAgendaEquipe" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnAgendaEquipeADM" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnAgendaColaborador" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnAgendaColaboradorADM" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -340,10 +343,13 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListarColaboradorActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnAgendaEquipe">
+            <Component class="javax.swing.JButton" name="btnAgendaEquipeADM">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agenda Equipe"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgendaEquipeADMActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lbSistema">
               <Properties>
@@ -353,12 +359,12 @@
                 <Property name="text" type="java.lang.String" value="Menu"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnAgendaColaborador">
+            <Component class="javax.swing.JButton" name="btnAgendaColaboradorADM">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agenda Colaborador"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgendaColaboradorActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgendaColaboradorADMActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnListarEquipe">

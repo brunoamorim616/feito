@@ -131,17 +131,17 @@ public class AgendaColaborador extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Agenda ag = new Agenda();
+        Agenda agenda = new Agenda();
         
-        ag.setDataCriacao(cpDataCria.getText());
-        ag.setDataCompromisso(cpDataCompr.getText());
-        ag.setTitulo(cpTitulo.getText());
-        ag.setDescricao(cpDescricao.getText());
+        agenda.setDataCriacao(cpDataCria.getText());
+        agenda.setDataCompromisso(cpDataCompr.getText());
+        agenda.setTitulo(cpTitulo.getText());
+        agenda.setDescricao(cpDescricao.getText());
 
         //Inserção do compromisso no DB
         AgendaDao agenDao = new AgendaDao();
         try {
-            agenDao.inserir(ag);
+            agenDao.inserir(agenda);
             JOptionPane.showMessageDialog(null, "Colaborador inserido com sucesso !");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao inserir colaborador !");

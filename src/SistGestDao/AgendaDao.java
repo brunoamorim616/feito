@@ -3,6 +3,8 @@ package SistGestDao;
 
 import SistGestDao.ConnectionFactory;
 import SistGestModelo.Agenda;
+import SistGestModelo.Colaborador;
+import SistGestViews.AgendaColaborador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,24 +14,26 @@ import java.util.List;
 
 public class AgendaDao extends ConnectionFactory  {
     private Connection con;
+   
 
     public AgendaDao() {
         this.con = this.getConnection();
     }
 
-    public void inserir(Agenda comp) throws SQLException {
+    public void inserir(Agenda agenda) throws SQLException {
 
         String sql = "insert into agenda "
                 + "(dataCriacao, dataCompromisso, titulo, descricao, colaborador_id, equipe_id) "
                 + "values (?, ?, ?, ?, ?, ?);";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
-            st.setString(1, "2019-03-11 19:00:00");
-            st.setString(2, "2019-03-11 21:00:00");
-            st.setString(3, comp.getTitulo());
-            st.setString(4, comp.getDescricao());
-            st.setInt(5, comp.getColaborador_id());
-            st.setInt(6, comp.getEquipe_id());
+            st.setString(1, agenda.getDataCriacao());
+            st.setString(2, agenda.getDataCompromisso());
+            st.setString(3, agenda.getTitulo());
+            st.setString(4, agenda.getDescricao());
+            st.setInt(5, agenda.getColaborador_id());
+            st.setInt(6, agenda.getEquipe_id());
+            
 
             st.execute();
             st.close();
@@ -38,6 +42,7 @@ public class AgendaDao extends ConnectionFactory  {
         this.con.close();
 
     }
+    
     
     public void eliminar(int colaborador_id) throws SQLException {
 
@@ -108,7 +113,7 @@ public class AgendaDao extends ConnectionFactory  {
     }
 
     public Agenda getCompromisso(int colaborador_id) throws SQLException {
-        String sql = "select * from cliente where codcli = ?";
+        String sql = "select * from agenda where colaborador_id = ?";
         Agenda compr = null;
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
@@ -121,6 +126,34 @@ public class AgendaDao extends ConnectionFactory  {
                     compr.setTitulo(rs.getString("titulo"));
                     compr.setDescricao(rs.getString("descricao"));
                     compr.setColaborador_id(rs.getInt("colaborador_id"));
+                }
+            }
+            st.close();
+        }
+
+        this.con.close();
+        return compr;
+    }
+    
+    /**
+     *
+     * @param equipe_id
+     * @return
+     * @throws SQLException
+     */
+    public Agenda getCompromissoEquipe(int equipe_id) throws SQLException {
+        String sql = "select * from agenda where equipe_id = ?";
+        Agenda compr = null;
+
+        try (PreparedStatement st = this.con.prepareStatement(sql)) {
+            st.setInt(1, equipe_id);
+            try (ResultSet rs = st.executeQuery()) {
+                if (rs.next()) {
+                    compr = new Agenda();
+                    compr.setDataCriacao(rs.getString("dataCriacao"));
+                    compr.setDataCompromisso(rs.getString("dataCompromisso"));
+                    compr.setTitulo(rs.getString("titulo"));
+                    compr.setDescricao(rs.getString("descricao"));
                     compr.setEquipe_id(rs.getInt("equipe_id"));
                 }
             }
