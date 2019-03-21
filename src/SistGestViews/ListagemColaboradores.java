@@ -62,7 +62,7 @@ public class ListagemColaboradores extends javax.swing.JPanel {
             }
 
         } catch (SQLException ex) {
-            String msg = "Ocorreu um erro ao obter os clientes do banco de dados!";
+            String msg = "Ocorreu um erro ao obter os COLABORADORES do banco de dados!";
             JOptionPane.showMessageDialog(null, msg);
             Logger.getLogger(ListagemColaboradores.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -132,6 +132,7 @@ public class ListagemColaboradores extends javax.swing.JPanel {
         lbEquipe = new javax.swing.JLabel();
         cpEquipeId = new javax.swing.JTextField();
         btnEliminarColaborador = new javax.swing.JToggleButton();
+        btnCancelar = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
 
@@ -179,7 +180,7 @@ public class ListagemColaboradores extends javax.swing.JPanel {
         );
         painelListagemLayout.setVerticalGroup(
             painelListagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
         );
 
         add(painelListagem, "card3");
@@ -244,11 +245,19 @@ public class ListagemColaboradores extends javax.swing.JPanel {
             }
         });
 
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelEdicaoLayout = new javax.swing.GroupLayout(painelEdicao);
         painelEdicao.setLayout(painelEdicaoLayout);
         painelEdicaoLayout.setHorizontalGroup(
             painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(separador1)
+            .addComponent(separador2)
             .addGroup(painelEdicaoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,15 +314,15 @@ public class ListagemColaboradores extends javax.swing.JPanel {
                         .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cpSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cpTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)))
+                        .addGap(14, 14, 14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdicaoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnEliminarColaborador)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEditar)
+                        .addGap(149, 149, 149)
+                        .addComponent(btnCancelar)))
                 .addContainerGap())
-            .addComponent(separador2)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdicaoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEliminarColaborador)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEditar)
-                .addGap(232, 232, 232))
         );
         painelEdicaoLayout.setVerticalGroup(
             painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,8 +375,9 @@ public class ListagemColaboradores extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditar)
-                    .addComponent(btnEliminarColaborador))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnEliminarColaborador)
+                    .addComponent(btnCancelar))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         add(painelEdicao, "card4");
@@ -392,7 +402,6 @@ public class ListagemColaboradores extends javax.swing.JPanel {
             }
             this.cl.show(this, "painelEdicao");
         }
-
     }//GEN-LAST:event_tblColaboradorMouseClicked
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -419,9 +428,6 @@ public class ListagemColaboradores extends javax.swing.JPanel {
             colDao.alterar(col);
             this.cl.show(this, "painelListagem");
             JOptionPane.showMessageDialog(null, "Colaborador alterado com sucesso !");
-           
-            this.cl.show(this, "painelListagem");
-            
         } catch (SQLException ex) {
             this.cl.show(this, "painelListagem");
             JOptionPane.showMessageDialog(null, "Falha ao alterar o colaborador !");
@@ -445,17 +451,20 @@ public class ListagemColaboradores extends javax.swing.JPanel {
                 colabDao.eliminar(this.idColaborador);              
                 this.limparTabela();
                 this.popularTabela();
-                this.cl.show(this, "painelListagem");
-                        
             } catch (SQLException ex) {
                 Logger.getLogger(ListagemColaboradores.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+            this.cl.show(this, "painelListagem");
         }
     }//GEN-LAST:event_btnEliminarColaboradorActionPerformed
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.cl.show(this, "painelListagem");
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JToggleButton btnEliminarColaborador;
     private javax.swing.JTextField cpBairro;
