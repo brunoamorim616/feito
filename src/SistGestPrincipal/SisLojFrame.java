@@ -50,10 +50,8 @@ public class SisLojFrame extends javax.swing.JFrame {
         PainelPrincipal.add(ag, "agenda");
         PainelPrincipal.add(cad, "cadColab");
         PainelPrincipal.add(loginPrincipal, "login");
-        PainelPrincipal.add(menuAdministrador, "menuPrincipal");
         PainelPrincipal.add(menuColaborador,"menuColaborador");
         PainelPrincipal.add(menuAdministrador,"menuAdministrador");
-        PainelPrincipal.add(list, "listagemColab");
         PainelPrincipal.add(list, "listagemColab");
         
 
@@ -381,20 +379,12 @@ public class SisLojFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
-        ColaboradorDao colDao = new ColaboradorDao();
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-        Colaborador c;
-            try {
-            c = colDao.getColaborador(idColaborador);
-            
-            String aux = c.getTipo();
-            if(aux.equals("1")){
-            
-                    cl.show(this.PainelPrincipal, "menuColaborador");
+          String aux = this.c.getTipo();
+            if(aux.equals("0")){
+                    cl.show(PainelPrincipal, "menuAdministrador");
                 }else{
-                    cl.show(this.PainelPrincipal, "menuAdministrador");
-                } catch (SQLException ex) {
-                Logger.getLogger(SisLojFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    cl.show(PainelPrincipal, "menuColaborador");
             }
     }//GEN-LAST:event_voltarActionPerformed
 
@@ -414,16 +404,15 @@ public class SisLojFrame extends javax.swing.JFrame {
         
         ColaboradorDao colDao = new ColaboradorDao();
         
-        Colaborador c;
         try {
-            c = colDao.getColaborador(loginAux, senhaAux);
-            String aux = c.getTipo();
-            if(c == null){
+            this.c = colDao.getColaborador(loginAux, senhaAux);
+            String aux = this.c.getTipo();
+            if(this.c == null){
                 String mensagem = "Senha ou usuario Incorretos";
                 
                 JOptionPane.showMessageDialog (null, mensagem);
             }else{
-                String mensagem2 = "Bem vindo: "+c.getNome();
+                String mensagem2 = "Bem vindo: "+this.c.getNome();
                 JOptionPane.showMessageDialog (null, mensagem2);
                 
                 CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
