@@ -494,6 +494,8 @@ public class SisLojFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnAgendaColaboradorADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaColaboradorADMActionPerformed
+        AgendaColaborador agencolab = new AgendaColaborador(this.c);
+        PainelPrincipal.add(agencolab, "agendaColaborador");
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
         cl.show(PainelPrincipal, "agendaColaborador");
     }//GEN-LAST:event_btnAgendaColaboradorADMActionPerformed
