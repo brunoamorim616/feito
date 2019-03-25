@@ -235,10 +235,12 @@ public class CadastroColaborador extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        
+        //linka uma pagina
         Colaborador col = new Colaborador();
         
         int equipeIdConvertido = Integer.parseInt(cpEquipeId.getText()); 
-        
+         //puxa os dados do campo e seta em variaveis
         col.setEquipe_id(equipeIdConvertido);
         col.setTipo(cpTipo.getText());
         col.setUsuario(cpUsuario.getText());
