@@ -23,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Aluno
  */
+//metodo para listagem da agenda do colaborador
 public class ListagemAgendaColaborador extends javax.swing.JPanel {
     private CardLayout cl;
     private Colaborador c;
@@ -52,7 +53,7 @@ public class ListagemAgendaColaborador extends javax.swing.JPanel {
 
             DefaultTableModel model = (DefaultTableModel) tblAgenda.getModel();
             List<Object> lista = new ArrayList<Object>();
-
+            //varre o banco de dados e seta a ordem que ira a parecer na tela 
             for (int i = 0; i < Agenda.size(); i++) {
                 Agenda c = Agenda.get(i);
                 lista.add(new Object[]{c.getDataCriacao(), c.getDataCompromisso(), c.getTitulo(),
@@ -257,6 +258,7 @@ public class ListagemAgendaColaborador extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblAgendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAgendaMouseClicked
+       //metodo de clique  na linha que o usuario ckicar vai abrir modo edicao
         int linha = tblAgenda.getSelectedRow();
 
         if (linha != -1) {

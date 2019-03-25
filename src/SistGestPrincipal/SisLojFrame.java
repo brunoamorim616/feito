@@ -42,18 +42,30 @@ public class SisLojFrame extends javax.swing.JFrame {
         initComponents();
         voltar.setEnabled(false);
 
+
         //Cria os componentes
+
+        //faz a ligacao de todas as paginas
+
+        CadastroColaborador cad = new CadastroColaborador();
+
         ConnectionFactory con = new ConnectionFactory();
         
         ColaboradorDao col = new ColaboradorDao();
         
         CadastroEquipe cadeq = new CadastroEquipe();
-        CadastroColaborador cad = new CadastroColaborador();
+        
+        
         
         ListagemEquipe listeq = new ListagemEquipe();
         ListagemColaboradores list = new ListagemColaboradores();
         
         
+
+
+        //adiciona todas as paginas no metodo construtor
+        PainelPrincipal.add(cad, "cadColab");
+
         PainelPrincipal.add(loginPrincipal, "login");
         PainelPrincipal.add(menuColaborador,"menuColaborador");
         PainelPrincipal.add(menuAdministrador,"menuAdministrador");
@@ -65,7 +77,7 @@ public class SisLojFrame extends javax.swing.JFrame {
         
         
 
-        //Chamar a tela padrão aqui
+        //Chamar a inicial aqui no caso a de login 
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
         cl.show(PainelPrincipal, "login");
         
@@ -438,10 +450,12 @@ public class SisLojFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    // metodo responsavel por verificar se o usuario e um adm ou um usario normal quando o botao voltar for clicado
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+        //puxa o tipo do cliente
           String aux = this.c.getTipo();
+          //caso o tipo for 0 ele puxa o painel de adm caso contrario ele puxa o painel colaborador
             if(aux.equals("0")){
                     cl.show(PainelPrincipal, "menuAdministrador");
                 }else{
@@ -458,25 +472,31 @@ public class SisLojFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_cpSenhaActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        //criacao de um metodo para verificar usuario e senha
         String senhaAux="",loginAux="";
         loginAux = cpUsuario2.getText();
         senhaAux = cpSenha.getText();
         
-        
+        //vincula uma pagina 
         ColaboradorDao colDao = new ColaboradorDao();
+        
         
         try {
             this.c = colDao.getColaborador(loginAux, senhaAux);
             String aux = this.c.getTipo();
+            //verifica se a Senha ou usuario estao corretos 
             if(this.c == null){
+                //caso errado uma linda mensagem aparece
                 String mensagem = "Senha ou usuario Incorretos";
                 
                 JOptionPane.showMessageDialog (null, mensagem);
             }else{
+                //se estiver correto outra linda mensagem aparece com o o nome do usuario 
                 String mensagem2 = "Bem vindo: "+this.c.getNome();
                 JOptionPane.showMessageDialog (null, mensagem2);
                 
                 CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+                //verifica na hora do login que painel ele deve acessar de acordo com o tipo do usuario 
                 if (aux.equals("1")) {
                     cl.show(this.PainelPrincipal, "menuColaborador");
                 }else{
@@ -494,23 +514,30 @@ public class SisLojFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnAgendaColaboradorADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaColaboradorADMActionPerformed
+        //quando botao for pressionado ele chama outra tela no caso agendacolaborador
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
         cl.show(PainelPrincipal, "agendaColaborador");
     }//GEN-LAST:event_btnAgendaColaboradorADMActionPerformed
 
     private void btnCadastrarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarColaboradorActionPerformed
+        //quando botao for pressionado ele chama outra tela no caso cadastrascolaborar
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
         cl.show(PainelPrincipal, "cadColab");
     }//GEN-LAST:event_btnCadastrarColaboradorActionPerformed
 
     private void btnListarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarColaboradorActionPerformed
+        //quando botao for pressionado ele chama outra tela no caso ListarColaborador
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
         cl.show(PainelPrincipal, "listagemColab");
     }//GEN-LAST:event_btnListarColaboradorActionPerformed
 
     private void btnAgendaColaborador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaColaborador1ActionPerformed
+        //quando botao for pressionado ele chama outra tela no caso AgendaColaborador
         AgendaColaborador agencolab = new AgendaColaborador(this.c);
         PainelPrincipal.add(agencolab, "agendaColaborador");
+
+       
+
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
         cl.show(PainelPrincipal, "agendaColaborador");
     }//GEN-LAST:event_btnAgendaColaborador1ActionPerformed
@@ -520,10 +547,14 @@ public class SisLojFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdicionarTarefa1ActionPerformed
 
     private void btnListaComproColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaComproColActionPerformed
+        //quando botao for pressionado ele chama outra tela no caso ListaComproColA
        ListagemAgendaColaborador ag = new ListagemAgendaColaborador(this.c);
        PainelPrincipal.add(ag, "listaAgColab");
+
+       
        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-       cl.show(PainelPrincipal, "listaAgColab");
+       cl.show(PainelPrincipal, "listagemColab");
+
     }//GEN-LAST:event_btnListaComproColActionPerformed
 
     private void btnListaComproAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaComproAdmActionPerformed
@@ -535,24 +566,33 @@ public class SisLojFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_opcaoVoltarActionPerformed
 
     private void BtnCadastrarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarEquipeActionPerformed
-       CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+       //quando botao for pressionado ele chama outra tela no caso CadastrarEquipe
+        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
        cl.show(PainelPrincipal, "cadastrarEquipe");
     }//GEN-LAST:event_BtnCadastrarEquipeActionPerformed
 
     private void btnListarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEquipeActionPerformed
-       CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+       //quando botao for pressionado ele chama outra tela no caso ListarEquipe
+        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
        cl.show(PainelPrincipal, "listarEquipe");
     }//GEN-LAST:event_btnListarEquipeActionPerformed
 
     private void btnAgendaEquipe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaEquipe1ActionPerformed
-        
+
+       //quando botao for pressionado ele chama outra tela no caso agendaEquipe
+        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+       cl.show(PainelPrincipal, "agendaEquipe");
+
     }//GEN-LAST:event_btnAgendaEquipe1ActionPerformed
 
     private void btnAgendaEquipeADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaEquipeADMActionPerformed
-        AgendaEquipe ageneq = new AgendaEquipe(this.eq);
-        PainelPrincipal.add(ageneq, "agendaEquipe");
-        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-        cl.show(PainelPrincipal, "agendaEquipe");
+       //quando botao for pressionado ele chama outra tela no caso agendaEquipe
+        ListagemAgendaColaborador ag = new ListagemAgendaColaborador(this.c);
+       PainelPrincipal.add(ag, "listaAgColab");
+
+       
+       CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+       cl.show(PainelPrincipal, "agendaEquipe");
     }//GEN-LAST:event_btnAgendaEquipeADMActionPerformed
 
     /**

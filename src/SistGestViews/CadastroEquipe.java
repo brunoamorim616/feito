@@ -114,8 +114,10 @@ public class CadastroEquipe extends javax.swing.JPanel {
     }//GEN-LAST:event_cpNomeEquipeActionPerformed
 
     private void btnSalvarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEquipeActionPerformed
+       
+        //linka uma pagina
         Equipe eq = new Equipe();
-        
+        //puxa os dados do campo e seta em variaveis
         eq.setNome(cpNomeEquipe.getText());
         eq.setDescricao(cpDescricaoEquipe.getText());
 

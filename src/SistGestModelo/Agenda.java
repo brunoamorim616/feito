@@ -1,6 +1,6 @@
 
 package SistGestModelo;
-
+//pagina responsavel por puxar e setar o valor das variaveis da tabela agenda
 public class Agenda {
     private String dataCriacao;
     private String dataCompromisso;

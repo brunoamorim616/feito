@@ -132,8 +132,9 @@ public class AgendaEquipe extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar2ActionPerformed
+        //vincula uma pagina 
         Agenda agenda = new Agenda();
-
+        //puxa os dados do campo e seta em variaveis
         agenda.setDataCriacao(cpDataCria.getText());
         agenda.setDataCompromisso(cpDataCompr.getText());
         agenda.setTitulo(cpTitulo.getText());
