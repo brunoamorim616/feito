@@ -1,10 +1,7 @@
 
 package SistGestDao;
 
-import SistGestDao.ConnectionFactory;
 import SistGestModelo.Agenda;
-import SistGestModelo.Colaborador;
-import SistGestViews.AgendaColaborador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,19 +17,24 @@ public class AgendaDao extends ConnectionFactory  {
         this.con = this.getConnection();
     }
 
+      
+    
+    
     public void inserir(Agenda agenda) throws SQLException {
+         
 
         String sql = "insert into agenda "
-                + "(dataCriacao, dataCompromisso, titulo, descricao, colaborador_id, equipe_id) "
+                + "(dataCriacao, dataCompromisso, titulo, descricao, equipe_id, colaborador_id) "
                 + "values (?, ?, ?, ?, ?, ?);";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
+            
             st.setString(1, agenda.getDataCriacao());
             st.setString(2, agenda.getDataCompromisso());
             st.setString(3, agenda.getTitulo());
             st.setString(4, agenda.getDescricao());
-            st.setInt(5, agenda.getColaborador_id());
-            st.setInt(6, agenda.getEquipe_id());
+            st.setInt(5, agenda.getEquipe_id());
+            st.setInt(6, agenda.getColaborador_id());
             
 
             st.execute();
@@ -58,7 +60,7 @@ public class AgendaDao extends ConnectionFactory  {
 
     }
 
-    public void alterar(Agenda comp) throws SQLException {
+    public void alterar(Agenda comp) throws SQLException{
 
         String sql2 = "insert into agenda "
                 + "(dataCriacao, dataCompromisso, "
@@ -69,6 +71,8 @@ public class AgendaDao extends ConnectionFactory  {
                 + "descricao = ?, where colaborador_id = ?";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
+            
+            
             st.setString(1, comp.getDataCriacao());
             st.setString(2, comp.getDataCompromisso());
             st.setString(3, comp.getTitulo());
@@ -84,12 +88,13 @@ public class AgendaDao extends ConnectionFactory  {
 
     public List<Agenda> listaCompromisso() throws SQLException {
         String sql = "select * from agenda";
-        List<Agenda> clientes = null;
+        List<Agenda> agenda = null;
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
             ResultSet rs = st.executeQuery();
 
-            clientes = new ArrayList<Agenda>();
+            agenda = new ArrayList<Agenda>();
+            
 
             while (rs.next()) {
                 Agenda c = new Agenda();
@@ -100,7 +105,7 @@ public class AgendaDao extends ConnectionFactory  {
                 c.setColaborador_id(rs.getInt("colaborador_id"));
                 c.setEquipe_id(rs.getInt("equipe_id"));
 
-                clientes.add(c);
+                agenda.add(c);
             }
 
             rs.close();
@@ -109,7 +114,38 @@ public class AgendaDao extends ConnectionFactory  {
         }
 
         this.con.close();
-        return clientes;
+        return agenda;
+    }
+    
+    public List<Agenda> listaCompromisso(int id_colaborador) throws SQLException {
+        String sql = "select * from agenda where colaborador_id = ?";
+        List<Agenda> agenda = null;
+
+        try (PreparedStatement st = this.con.prepareStatement(sql)) {
+            st.setInt(1, id_colaborador);
+            ResultSet rs = st.executeQuery();
+
+            agenda = new ArrayList<Agenda>();
+            
+
+            while (rs.next()) {
+                Agenda c = new Agenda();
+                c.setDataCriacao(rs.getString("dataCriacao"));
+                c.setDataCompromisso(rs.getString("dataCompromisso"));
+                c.setTitulo(rs.getString("titulo"));
+                c.setDescricao(rs.getString("descricao"));
+                c.setColaborador_id(rs.getInt("colaborador_id"));
+
+                agenda.add(c);
+            }
+
+            rs.close();
+            st.close();
+
+        }
+
+        this.con.close();
+        return agenda;
     }
 
     public Agenda getCompromisso(int colaborador_id) throws SQLException {

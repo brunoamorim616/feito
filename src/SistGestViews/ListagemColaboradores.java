@@ -26,7 +26,6 @@ public class ListagemColaboradores extends javax.swing.JPanel {
 
     private CardLayout cl;
     private int idColaborador;
-    private Colaborador colaborador;
 
     public ListagemColaboradores() {
         initComponents();
@@ -39,11 +38,11 @@ public class ListagemColaboradores extends javax.swing.JPanel {
     }
 
     private void popularTabela() {
-        ColaboradorDao colab = new ColaboradorDao();
+        ColaboradorDao colaboradordao = new ColaboradorDao();
         List<Colaborador> ListagemColaboradores;
 
         try {
-            ListagemColaboradores = colab.listarColaboradores();
+            ListagemColaboradores = colaboradordao.listarColaboradores();
 
             DefaultTableModel model = (DefaultTableModel) tblColaborador.getModel();
             List<Object> lista = new ArrayList<Object>();
@@ -62,7 +61,7 @@ public class ListagemColaboradores extends javax.swing.JPanel {
             }
 
         } catch (SQLException ex) {
-            String msg = "Ocorreu um erro ao obter os COLABORADORES do banco de dados!";
+            String msg = "Erro ao obter dados";
             JOptionPane.showMessageDialog(null, msg);
             Logger.getLogger(ListagemColaboradores.class.getName()).log(Level.SEVERE, null, ex);
         }

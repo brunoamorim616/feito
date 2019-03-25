@@ -19,12 +19,13 @@ import javax.swing.JOptionPane;
  * @author Aluno
  */
 public class AgendaColaborador extends javax.swing.JPanel {
-
+    private Colaborador c;
     /**
      * Creates new form AgendaColaborador
      */
-    public AgendaColaborador() {
+    public AgendaColaborador(Colaborador colaborador) {
         initComponents();
+        c = colaborador;
     }
 
     /**
@@ -66,15 +67,20 @@ public class AgendaColaborador extends javax.swing.JPanel {
         lbAgendaColaborador.setText("Adcionar à Agenda");
 
         try {
-            cpDataCria.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-#### ##:##:##")));
+            cpDataCria.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-## ##:##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        cpDataCria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpDataCriaActionPerformed(evt);
+            }
+        });
 
         labelDataCria.setText("Criada em:");
 
         try {
-            cpDataCompr.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-#### ##:##:##")));
+            cpDataCompr.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-## ##:##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -137,17 +143,23 @@ public class AgendaColaborador extends javax.swing.JPanel {
         agenda.setDataCompromisso(cpDataCompr.getText());
         agenda.setTitulo(cpTitulo.getText());
         agenda.setDescricao(cpDescricao.getText());
+        agenda.setColaborador_id(c.getId());
+        agenda.setEquipe_id(c.getEquipe_id());
 
         //Inserção do compromisso no DB
         AgendaDao agenDao = new AgendaDao();
         try {
             agenDao.inserir(agenda);
-            JOptionPane.showMessageDialog(null, "Colaborador inserido com sucesso !");
+            JOptionPane.showMessageDialog(null, "Adcionado à sua Agenda com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Falha ao inserir colaborador !");
+            JOptionPane.showMessageDialog(null, "Falha ao incerir em sua Agenda!");
             Logger.getLogger(CadastroColaborador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void cpDataCriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpDataCriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cpDataCriaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -7,6 +7,7 @@ package SistGestViews;
 
 import SistGestDao.AgendaDao;
 import SistGestModelo.Agenda;
+import SistGestModelo.Equipe;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,12 +18,13 @@ import javax.swing.JOptionPane;
  * @author Aluno
  */
 public class AgendaEquipe extends javax.swing.JPanel {
-
+    private Equipe eq;
     /**
      * Creates new form AgendaEquipe
      */
-    public AgendaEquipe() {
+    public AgendaEquipe(Equipe equipe) {
         initComponents();
+        equipe = eq;
     }
 
     /**
@@ -64,7 +66,7 @@ public class AgendaEquipe extends javax.swing.JPanel {
         lbAgendaEquipe.setText("Adcionar à Agenda da Equipe");
 
         try {
-            cpDataCria.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-#### ##:##:##")));
+            cpDataCria.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-## ##:##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -72,7 +74,7 @@ public class AgendaEquipe extends javax.swing.JPanel {
         labelDataCria.setText("Criada em:");
 
         try {
-            cpDataCompr.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-#### ##:##:##")));
+            cpDataCompr.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-## ##:##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -136,22 +138,21 @@ public class AgendaEquipe extends javax.swing.JPanel {
         agenda.setDataCompromisso(cpDataCompr.getText());
         agenda.setTitulo(cpTitulo.getText());
         agenda.setDescricao(cpDescricao.getText());
+        agenda.setEquipe_id(eq.getId());
 
         //Inserção do compromisso no DB
         AgendaDao agenDao = new AgendaDao();
         try {
             agenDao.inserir(agenda);
-            JOptionPane.showMessageDialog(null, "Colaborador inserido com sucesso !");
+            JOptionPane.showMessageDialog(null, "Inserido à Agenda da equipe com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Falha ao inserir colaborador !");
+            JOptionPane.showMessageDialog(null, "Falha ao inserir na Agenda da Equipe!");
             Logger.getLogger(CadastroColaborador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSalvar2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSalvar;
-    private javax.swing.JButton btnSalvar1;
     private javax.swing.JButton btnSalvar2;
     private javax.swing.JFormattedTextField cpDataCompr;
     private javax.swing.JFormattedTextField cpDataCria;

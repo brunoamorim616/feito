@@ -8,6 +8,7 @@ package SistGestPrincipal;
 import SistGestDao.ColaboradorDao;
 import SistGestDao.ConnectionFactory;
 import SistGestModelo.Colaborador;
+import SistGestModelo.Equipe;
 import SistGestViews.AgendaColaborador;
 import SistGestViews.AgendaEquipe;
 import SistGestViews.CadastroColaborador;
@@ -31,9 +32,8 @@ import static sun.security.jgss.GSSUtil.login;
  */
 public class SisLojFrame extends javax.swing.JFrame {
     
-    int IdColaborador;
     Colaborador c;
-    private int idColaborador;
+    Equipe eq;
     
     /**
      * Creates new form SisLojFrame
@@ -43,30 +43,25 @@ public class SisLojFrame extends javax.swing.JFrame {
         voltar.setEnabled(false);
 
         //Cria os componentes
-        ListagemAgendaColaborador ag = new ListagemAgendaColaborador();
-        CadastroColaborador cad = new CadastroColaborador();
         ConnectionFactory con = new ConnectionFactory();
+        
         ColaboradorDao col = new ColaboradorDao();
-        ListagemColaboradores list = new ListagemColaboradores();
+        
         CadastroEquipe cadeq = new CadastroEquipe();
+        CadastroColaborador cad = new CadastroColaborador();
+        
         ListagemEquipe listeq = new ListagemEquipe();
-        AgendaColaborador agencolab = new AgendaColaborador();
-        AgendaEquipe ageneq = new AgendaEquipe();
-        ListagemAgendaColaborador listAgColab = new ListagemAgendaColaborador();
+        ListagemColaboradores list = new ListagemColaboradores();
         
         
-
-        PainelPrincipal.add(ag, "agenda");
-        PainelPrincipal.add(cad, "cadColab");
         PainelPrincipal.add(loginPrincipal, "login");
         PainelPrincipal.add(menuColaborador,"menuColaborador");
         PainelPrincipal.add(menuAdministrador,"menuAdministrador");
-        PainelPrincipal.add(list, "listagemColab");
+        PainelPrincipal.add(cad, "cadColab");
         PainelPrincipal.add(cadeq, "cadastrarEquipe");
+        
+        PainelPrincipal.add(list, "listagemColab");
         PainelPrincipal.add(listeq, "listarEquipe");
-        PainelPrincipal.add(ageneq, "agendaEquipe");
-        PainelPrincipal.add(agencolab, "agendaColaborador");
-        PainelPrincipal.add(listAgColab, "listaAgColab");
         
         
 
@@ -514,6 +509,8 @@ public class SisLojFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListarColaboradorActionPerformed
 
     private void btnAgendaColaborador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaColaborador1ActionPerformed
+        AgendaColaborador agencolab = new AgendaColaborador(this.c);
+        PainelPrincipal.add(agencolab, "agendaColaborador");
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
         cl.show(PainelPrincipal, "agendaColaborador");
     }//GEN-LAST:event_btnAgendaColaborador1ActionPerformed
@@ -523,8 +520,10 @@ public class SisLojFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdicionarTarefa1ActionPerformed
 
     private void btnListaComproColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaComproColActionPerformed
+       ListagemAgendaColaborador ag = new ListagemAgendaColaborador(this.c);
+       PainelPrincipal.add(ag, "listaAgColab");
        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-       cl.show(PainelPrincipal, "listagemColab");
+       cl.show(PainelPrincipal, "listaAgColab");
     }//GEN-LAST:event_btnListaComproColActionPerformed
 
     private void btnListaComproAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaComproAdmActionPerformed
@@ -546,13 +545,14 @@ public class SisLojFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListarEquipeActionPerformed
 
     private void btnAgendaEquipe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaEquipe1ActionPerformed
-       CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-       cl.show(PainelPrincipal, "agendaEquipe");
+        
     }//GEN-LAST:event_btnAgendaEquipe1ActionPerformed
 
     private void btnAgendaEquipeADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaEquipeADMActionPerformed
-       CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-       cl.show(PainelPrincipal, "agendaEquipe");
+        AgendaEquipe ageneq = new AgendaEquipe(this.eq);
+        PainelPrincipal.add(ageneq, "agendaEquipe");
+        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+        cl.show(PainelPrincipal, "agendaEquipe");
     }//GEN-LAST:event_btnAgendaEquipeADMActionPerformed
 
     /**
