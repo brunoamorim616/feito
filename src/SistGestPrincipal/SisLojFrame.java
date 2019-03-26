@@ -549,11 +549,11 @@ public class SisLojFrame extends javax.swing.JFrame {
     private void btnListaComproColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaComproColActionPerformed
         //quando botao for pressionado ele chama outra tela no caso ListaComproColA
        ListagemAgendaColaborador ag = new ListagemAgendaColaborador(this.c);
-       PainelPrincipal.add(ag, "listaAgColab");
+       PainelPrincipal.add(ag, "listagemAgColab");
 
        
        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-       cl.show(PainelPrincipal, "listagemColab");
+       cl.show(PainelPrincipal, "listagemAgColab");
 
     }//GEN-LAST:event_btnListaComproColActionPerformed
 

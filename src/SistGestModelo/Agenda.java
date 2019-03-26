@@ -2,12 +2,21 @@
 package SistGestModelo;
 //pagina responsavel por puxar e setar o valor das variaveis da tabela agenda
 public class Agenda {
+    private int idAgenda;
     private String dataCriacao;
     private String dataCompromisso;
     private String titulo;
     private String descricao;
     private int colaborador_id;
     private int equipe_id;
+
+    public int getIdAgenda() {
+        return idAgenda;
+    }
+
+    public void setIdAgenda(int idAgenda) {
+        this.idAgenda = idAgenda;
+    }
 
     public String getDataCriacao() {
         return dataCriacao;
@@ -56,6 +65,8 @@ public class Agenda {
     public void setEquipe_id(int equipe_id) {
         this.equipe_id = equipe_id;
     }
+    
+    
 
     
 }

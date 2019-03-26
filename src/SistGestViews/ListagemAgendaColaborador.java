@@ -34,11 +34,11 @@ public class ListagemAgendaColaborador extends javax.swing.JPanel {
         initComponents();
         this.c = colaborador;
 
-        this.add(painelAgendaColaboradorEdicao, "painelAgenda");
-        this.add(painelListagemAgendaColaborador, "painelListagemAgenda");
+        
+        this.add(painelListagemAgendaColaborador, "painelListagemAgendaColaborador");
         
         this.cl = (CardLayout) this.getLayout();
-        this.cl.show(this, "painelListagemAgenda");
+        this.cl.show(this, "painelListagemAgendaColaborador");
         
         this.limparTabela();
         this.popularTabela();
@@ -268,8 +268,9 @@ public class ListagemAgendaColaborador extends javax.swing.JPanel {
                 this.preencherCamposEdicao(codigoColaborador);
             } catch (SQLException ex) {
                 Logger.getLogger(ListagemColaboradores.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                this.cl.show(this, "painelEdicao");
+            }   
+                this.add(painelAgendaColaboradorEdicao, "painelAgendaEdicao");
+                this.cl.show(this, "painelAgendaEdicao");
         }
     }//GEN-LAST:event_tblAgendaMouseClicked
 
