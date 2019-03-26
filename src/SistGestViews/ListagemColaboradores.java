@@ -402,7 +402,7 @@ public class ListagemColaboradores extends javax.swing.JPanel {
             this.cl.show(this, "painelEdicao");
         }
     }//GEN-LAST:event_tblColaboradorMouseClicked
-
+    //metodo para editar 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         Colaborador col = new Colaborador();
 
@@ -437,7 +437,7 @@ public class ListagemColaboradores extends javax.swing.JPanel {
     private void cpNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cpNomeActionPerformed
-
+    // metodo para eliminar colaborador
     private void btnEliminarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarColaboradorActionPerformed
         Object[] options = {"Sim", "Não"};
         int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Deseja realmente eliminar este cliente ?", "Atenção!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
@@ -458,6 +458,7 @@ public class ListagemColaboradores extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarColaboradorActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        //quando botao cancel for precionado volta para o painel listagem
         this.cl.show(this, "painelListagem");
     }//GEN-LAST:event_btnCancelarActionPerformed
 

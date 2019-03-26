@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+//metodo para conexao com o banco de dados
 public class ConnectionFactory {
 
     public Connection getConnection() {

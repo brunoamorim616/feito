@@ -1,6 +1,6 @@
 
 package SistGestModelo;
-
+//pagina responsavel por puxar e setar o valor das variaveis da tabela equipe 
 public class Equipe {
     private int id;
     private String nome;

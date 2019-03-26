@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Aluno
  */
 public class ListagemEquipe extends javax.swing.JPanel {
-    
+    //declaracao de variaveis privadas e do cardlayout
     private CardLayout cl;
     private int idEquipe;
     private Equipe equipe;
@@ -36,10 +36,11 @@ public class ListagemEquipe extends javax.swing.JPanel {
      */
     public ListagemEquipe() {
         initComponents();
-        
+        //adicionado os paineis listagem e edicao
         this.add(painelListagem, "painelListagem");
         this.add(painelEdicao, "painelEdicao");
 
+        
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelListagem");
     }
@@ -254,7 +255,8 @@ public class ListagemEquipe extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblEquipeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEquipeMouseClicked
-        int linha = tblEquipe.getSelectedRow();
+       //quando pressionado em uma linha da tabela o painel edicao vem
+       int linha = tblEquipe.getSelectedRow();
 
         if (linha != -1) {
             String codigo = tblEquipe.getValueAt(linha, 0).toString();
@@ -274,10 +276,11 @@ public class ListagemEquipe extends javax.swing.JPanel {
     }//GEN-LAST:event_tblEquipeComponentShown
 
     private void painelListagemComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_painelListagemComponentShown
+       //limpar e popular tabela 
         this.limparTabela();
         this.popularTabela();
     }//GEN-LAST:event_painelListagemComponentShown
-
+    //metodo de editar tabela
     private void btnEditarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEquipeActionPerformed
         Equipe eq = new Equipe();
         
@@ -301,7 +304,7 @@ public class ListagemEquipe extends javax.swing.JPanel {
     private void cpNomeEquipeEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpNomeEquipeEditarActionPerformed
         //CAMPO DE DIGITAÇÃO
     }//GEN-LAST:event_cpNomeEquipeEditarActionPerformed
-
+    //metodo de eliminar equipe
     private void btnEliminarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEquipeActionPerformed
         Object[] options = {"Sim", "Não"};
         int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Deseja realmente eliminar esta EQUIPE ?", "Atenção!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
@@ -322,6 +325,7 @@ public class ListagemEquipe extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarEquipeActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+       //quando botao cancelar pressionado volta para painel listagem
         this.cl.show(this, "painelListagem");
     }//GEN-LAST:event_btnCancelarActionPerformed
 

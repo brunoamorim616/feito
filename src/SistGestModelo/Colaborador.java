@@ -2,7 +2,7 @@ package SistGestModelo;
 
 
 public class Colaborador {
-
+//pagina responsavel por puxar e setar o valor das variaveis da tabela colaborador
     private int id;
     private int equipe_id;
     private String tipo;
