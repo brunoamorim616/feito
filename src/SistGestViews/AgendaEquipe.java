@@ -138,6 +138,7 @@ public class AgendaEquipe extends javax.swing.JPanel {
         agenda.setDataCompromisso(cpDataCompr.getText());
         agenda.setTitulo(cpTitulo.getText());
         agenda.setDescricao(cpDescricao.getText());
+
         agenda.setEquipe_id(eq.getId());
 
         //Inserção do compromisso no DB
