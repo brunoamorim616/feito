@@ -34,7 +34,7 @@ public class ListagemEquipe extends javax.swing.JPanel {
     /**
      * Creates new form ListagemEquipe
      */
-    public ListagemEquipe() {
+    public ListagemEquipe() throws SQLException {
         initComponents();
         //adicionado os paineis listagem e edicao
         this.add(painelListagem, "painelListagem");
@@ -43,6 +43,12 @@ public class ListagemEquipe extends javax.swing.JPanel {
         
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelListagem");
+        EquipeDao eqdao = new EquipeDao();
+        
+        
+        
+        
+        
     }
     
     private void popularTabela() {

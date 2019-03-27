@@ -10,7 +10,7 @@ import SistGestDao.ConnectionFactory;
 import SistGestModelo.Colaborador;
 import SistGestModelo.Equipe;
 import SistGestViews.AgendaColaboradorADM;
-import SistGestViews.AgendaEquipe;
+import SistGestViews.AgendaEquipeADM;
 import SistGestViews.CadastroColaborador;
 import SistGestViews.ListagemAgendaColaborador;
 import SistGestViews.CadastroEquipe;
@@ -38,7 +38,7 @@ public class SisLojFrame extends javax.swing.JFrame {
     /**
      * Creates new form SisLojFrame
      */
-    public SisLojFrame() {
+    public SisLojFrame() throws SQLException {
         initComponents();
         voltar.setEnabled(false);
 
@@ -54,14 +54,11 @@ public class SisLojFrame extends javax.swing.JFrame {
         ColaboradorDao col = new ColaboradorDao();
         
         CadastroEquipe cadeq = new CadastroEquipe();
-       
         
         
         
         ListagemEquipe listeq = new ListagemEquipe();
         ListagemColaboradores list = new ListagemColaboradores();
-        AgendaEquipe AgeEqui = new AgendaEquipe(eq);
-        AgendaColaboradorADM AgeColab = new AgendaColaboradorADM();
         
         
 
@@ -74,12 +71,9 @@ public class SisLojFrame extends javax.swing.JFrame {
         PainelPrincipal.add(menuAdministrador,"menuAdministrador");
         PainelPrincipal.add(cad, "cadColab");
         PainelPrincipal.add(cadeq, "cadastrarEquipe");
+        
         PainelPrincipal.add(list, "listagemColab");
         PainelPrincipal.add(listeq, "listarEquipe");
-        PainelPrincipal.add(AgeEqui, "AgendaEquipe");
-        PainelPrincipal.add(AgeColab, "AgendaColaborador");
-        
-        
         
         
 
@@ -194,7 +188,7 @@ public class SisLojFrame extends javax.swing.JFrame {
                     .addGroup(menuColaboradorLayout.createSequentialGroup()
                         .addComponent(lbTarefa1)
                         .addGap(16, 16, 16)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addGroup(menuColaboradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAgendaColaborador1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAgendaEquipe1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,16 +198,16 @@ public class SisLojFrame extends javax.swing.JFrame {
                     .addComponent(btnListaComproCol, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
             .addGroup(menuColaboradorLayout.createSequentialGroup()
-                .addGap(147, 147, 147)
+                .addGap(187, 187, 187)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuColaboradorLayout.setVerticalGroup(
             menuColaboradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuColaboradorLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addGroup(menuColaboradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbAgenda1)
                     .addComponent(lbTarefa1))
@@ -293,66 +287,66 @@ public class SisLojFrame extends javax.swing.JFrame {
         menuAdministradorLayout.setHorizontalGroup(
             menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuAdministradorLayout.createSequentialGroup()
+                .addGap(165, 165, 165)
                 .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuAdministradorLayout.createSequentialGroup()
-                        .addGap(27, 141, Short.MAX_VALUE)
-                        .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAdministradorLayout.createSequentialGroup()
-                                .addComponent(lbColaborador)
-                                .addGap(58, 58, 58)
-                                .addComponent(lbAgenda)
-                                .addGap(51, 51, 51)
-                                .addComponent(lbEquipe)
-                                .addGap(18, 18, 18))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAdministradorLayout.createSequentialGroup()
-                                .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(menuAdministradorLayout.createSequentialGroup()
-                                        .addComponent(btnCadastrarColaborador, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnAgendaEquipeADM)
-                                        .addGap(18, 18, 18))
-                                    .addGroup(menuAdministradorLayout.createSequentialGroup()
-                                        .addComponent(btnListarColaborador, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnAgendaColaboradorADM)
-                                        .addGap(10, 10, 10)))
-                                .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnListarEquipe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BtnCadastrarEquipe, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                        .addGap(16, 16, 16)
+                        .addComponent(btnAgendaEquipeADM))
+                    .addComponent(btnAgendaColaboradorADM)
                     .addGroup(menuAdministradorLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(174, 174, 174)
-                        .addComponent(lbSistema)))
-                .addGap(48, 48, 48))
+                        .addGap(43, 43, 43)
+                        .addComponent(lbAgenda)))
+                .addGap(43, 43, 43)
+                .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbColaborador)
+                    .addComponent(btnCadastrarColaborador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnListarColaborador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAdministradorLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAdministradorLayout.createSequentialGroup()
+                        .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BtnCadastrarEquipe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnListarEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(257, 257, 257))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAdministradorLayout.createSequentialGroup()
+                        .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbSistema)
+                            .addComponent(lbEquipe))
+                        .addGap(266, 266, 266))))
         );
         menuAdministradorLayout.setVerticalGroup(
             menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuAdministradorLayout.createSequentialGroup()
-                .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(15, 15, 15)
+                .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuAdministradorLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(menuAdministradorLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(lbSistema)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbColaborador)
-                    .addComponent(lbEquipe)
-                    .addComponent(lbAgenda))
-                .addGap(18, 18, 18)
-                .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnCadastrarEquipe)
-                    .addComponent(btnAgendaEquipeADM)
-                    .addComponent(btnCadastrarColaborador, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnListarColaborador)
-                    .addComponent(btnListarEquipe)
-                    .addComponent(btnAgendaColaboradorADM))
-                .addGap(24, 24, 24))
+                        .addGap(61, 61, 61)
+                        .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(menuAdministradorLayout.createSequentialGroup()
+                                .addComponent(lbColaborador)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCadastrarColaborador)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnListarColaborador))
+                            .addGroup(menuAdministradorLayout.createSequentialGroup()
+                                .addComponent(lbAgenda)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAgendaEquipeADM)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAgendaColaboradorADM))))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addComponent(lbEquipe)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BtnCadastrarEquipe)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnListarEquipe)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         PainelPrincipal.add(menuAdministrador, "card2");
@@ -388,27 +382,24 @@ public class SisLojFrame extends javax.swing.JFrame {
         loginPrincipalLayout.setHorizontalGroup(
             loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPrincipalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelLogin)
-                .addGap(72, 72, 72))
-            .addGroup(loginPrincipalLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labelSenha2)
                     .addComponent(labelUsuario2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelLogin)
                     .addComponent(cpUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cpSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLogin))
-                .addContainerGap(375, Short.MAX_VALUE))
+                .addContainerGap(299, Short.MAX_VALUE))
         );
         loginPrincipalLayout.setVerticalGroup(
             loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPrincipalLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(34, 34, 34)
                 .addComponent(labelLogin)
-                .addGap(40, 40, 40)
+                .addGap(47, 47, 47)
                 .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelUsuario2)
                     .addComponent(cpUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -416,7 +407,7 @@ public class SisLojFrame extends javax.swing.JFrame {
                 .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cpSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelSenha2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLogin)
                 .addGap(86, 86, 86))
         );
@@ -469,6 +460,102 @@ public class SisLojFrame extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_voltarActionPerformed
 
+    private void cpUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpUsuario2ActionPerformed
+
+    }//GEN-LAST:event_cpUsuario2ActionPerformed
+
+    private void cpSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cpSenhaActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        //criacao de um metodo para verificar usuario e senha
+        String senhaAux="",loginAux="";
+        loginAux = cpUsuario2.getText();
+        senhaAux = cpSenha.getText();
+        
+        //vincula uma pagina 
+        ColaboradorDao colDao = new ColaboradorDao();
+        
+        
+        try {
+            this.c = colDao.getColaborador(loginAux, senhaAux);
+            
+            //verifica se a Senha ou usuario estao corretos 
+            if(this.c == null){
+                
+                //caso errado uma linda mensagem aparece
+                String mensagem = "Senha ou usuario Incorretos";
+                
+                JOptionPane.showMessageDialog (null, mensagem);
+            }else{
+                String aux = this.c.getTipo();
+                //se estiver correto outra linda mensagem aparece com o o nome do usuario 
+                String mensagem2 = "Bem vindo: "+this.c.getNome();
+                JOptionPane.showMessageDialog (null, mensagem2);
+                
+                CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+                //verifica na hora do login que painel ele deve acessar de acordo com o tipo do usuario 
+                if (aux.equals("1")) {
+                    cl.show(this.PainelPrincipal, "menuColaborador");
+                }else{
+                    cl.show(this.PainelPrincipal, "menuAdministrador");
+                }
+                
+                
+                voltar.setEnabled(true);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SisLojFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnAgendaColaboradorADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaColaboradorADMActionPerformed
+        //quando botao for pressionado ele chama outra tela no caso agendacolaborador
+        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+        cl.show(PainelPrincipal, "agendaColaborador");
+    }//GEN-LAST:event_btnAgendaColaboradorADMActionPerformed
+
+    private void btnCadastrarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarColaboradorActionPerformed
+        //quando botao for pressionado ele chama outra tela no caso cadastrascolaborar
+        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+        cl.show(PainelPrincipal, "cadColab");
+    }//GEN-LAST:event_btnCadastrarColaboradorActionPerformed
+
+    private void btnListarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarColaboradorActionPerformed
+        //quando botao for pressionado ele chama outra tela no caso ListarColaborador
+        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+        cl.show(PainelPrincipal, "listagemColab");
+    }//GEN-LAST:event_btnListarColaboradorActionPerformed
+
+    private void btnAgendaColaborador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaColaborador1ActionPerformed
+        //quando botao for pressionado ele chama outra tela no caso AgendaColaborador
+        AgendaColaboradorADM agencolab = new AgendaColaboradorADM();
+        PainelPrincipal.add(agencolab, "agendaColaborador");
+
+       
+
+        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+        cl.show(PainelPrincipal, "agendaColaborador");
+    }//GEN-LAST:event_btnAgendaColaborador1ActionPerformed
+
+    private void btnAdicionarTarefa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarTarefa1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdicionarTarefa1ActionPerformed
+
+    private void btnListaComproColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaComproColActionPerformed
+        //quando botao for pressionado ele chama outra tela no caso ListaComproColA
+       ListagemAgendaColaborador ag = new ListagemAgendaColaborador(this.c);
+       PainelPrincipal.add(ag, "listagemAgColab");
+
+       
+       CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+       cl.show(PainelPrincipal, "listagemAgColab");
+
+    }//GEN-LAST:event_btnListaComproColActionPerformed
+
     private void btnListaComproAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaComproAdmActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnListaComproAdmActionPerformed
@@ -477,121 +564,41 @@ public class SisLojFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_opcaoVoltarActionPerformed
 
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        //criacao de um metodo para verificar usuario e senha
-        String senhaAux="",loginAux="";
-        loginAux = cpUsuario2.getText();
-        senhaAux = cpSenha.getText();
-
-        //vincula uma pagina
-        ColaboradorDao colDao = new ColaboradorDao();
-
-        try {
-            this.c = colDao.getColaborador(loginAux, senhaAux);
-            String aux = this.c.getTipo();
-            //verifica se a Senha ou usuario estao corretos
-            if(this.c == null){
-                //caso errado uma linda mensagem aparece
-                String mensagem = "Senha ou usuario Incorretos";
-
-                JOptionPane.showMessageDialog (null, mensagem);
-            }else{
-                //se estiver correto outra linda mensagem aparece com o o nome do usuario
-                String mensagem2 = "Bem vindo: "+this.c.getNome();
-                JOptionPane.showMessageDialog (null, mensagem2);
-
-                CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-                //verifica na hora do login que painel ele deve acessar de acordo com o tipo do usuario
-                if (aux.equals("1")) {
-                    cl.show(this.PainelPrincipal, "menuColaborador");
-                }else{
-                    cl.show(this.PainelPrincipal, "menuAdministrador");
-                }
-
-                voltar.setEnabled(true);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(SisLojFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_btnLoginActionPerformed
-
-    private void cpSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cpSenhaActionPerformed
-
-    private void cpUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpUsuario2ActionPerformed
-
-    }//GEN-LAST:event_cpUsuario2ActionPerformed
-
-    private void btnListaComproColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaComproColActionPerformed
-        //quando botao for pressionado ele chama outra tela no caso ListaComproColA
-        ListagemAgendaColaborador ag = new ListagemAgendaColaborador(this.c);
-        PainelPrincipal.add(ag, "listagemAgColab");
-
+    private void BtnCadastrarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarEquipeActionPerformed
+       //quando botao for pressionado ele chama outra tela no caso CadastrarEquipe
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-        cl.show(PainelPrincipal, "listagemAgColab");
-    }//GEN-LAST:event_btnListaComproColActionPerformed
+       cl.show(PainelPrincipal, "cadastrarEquipe");
+    }//GEN-LAST:event_BtnCadastrarEquipeActionPerformed
 
-    private void btnAdicionarTarefa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarTarefa1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAdicionarTarefa1ActionPerformed
+    private void btnListarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEquipeActionPerformed
+       //quando botao for pressionado ele chama outra tela no caso ListarEquipe
+        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+       cl.show(PainelPrincipal, "listarEquipe");
+       
+    }//GEN-LAST:event_btnListarEquipeActionPerformed
 
     private void btnAgendaEquipe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaEquipe1ActionPerformed
 
-        //quando botao for pressionado ele chama outra tela no caso agendaEquipe
+       //quando botao for pressionado ele chama outra tela no caso agendaEquipe
+       AgendaEquipeADM ag = new AgendaEquipeADM();
+       PainelPrincipal.add(ag, "agendaEquipe");
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-        cl.show(PainelPrincipal, "agendaEquipe");
+       cl.show(PainelPrincipal, "agendaEquipe");
+
     }//GEN-LAST:event_btnAgendaEquipe1ActionPerformed
 
-    private void btnAgendaColaborador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaColaborador1ActionPerformed
-        //quando botao for pressionado ele chama outra tela no caso AgendaColaborador
-        AgendaColaboradorADM agencolab = new AgendaColaboradorADM();
-        PainelPrincipal.add(agencolab, "agendaColaborador");
-
-        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-        cl.show(PainelPrincipal, "agendaColaborador");
-    }//GEN-LAST:event_btnAgendaColaborador1ActionPerformed
-
-    private void btnCadastrarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarColaboradorActionPerformed
-        //quando botao for pressionado ele chama outra tela no caso cadastrascolaborar
-        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-        cl.show(PainelPrincipal, "cadColab");
-    }//GEN-LAST:event_btnCadastrarColaboradorActionPerformed
-
-    private void btnListarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEquipeActionPerformed
-        //quando botao for pressionado ele chama outra tela no caso ListarEquipe
-        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-        cl.show(PainelPrincipal, "listarEquipe");
-    }//GEN-LAST:event_btnListarEquipeActionPerformed
-
-    private void btnAgendaColaboradorADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaColaboradorADMActionPerformed
-        //quando botao for pressionado ele chama outra tela no caso agendacolaborador
-        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-        cl.show(PainelPrincipal, "AgendaColaborador");
-    }//GEN-LAST:event_btnAgendaColaboradorADMActionPerformed
-
     private void btnAgendaEquipeADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaEquipeADMActionPerformed
-        //quando botao for pressionado ele chama outra tela no caso agendaEquipe
-        ListagemAgendaColaborador ag = new ListagemAgendaColaborador(this.c);
-        PainelPrincipal.add(ag, "listaAgColab");
-
+       //quando botao for pressionado ele chama outra tela no caso agendaEquipe
+      
+        
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-        cl.show(PainelPrincipal, "AgendaEquipe");
+        AgendaEquipeADM ag = new AgendaEquipeADM();
+       PainelPrincipal.add(ag, "agendaEquipe");
+
+       
+       
+       cl.show(PainelPrincipal, "agendaEquipe");
     }//GEN-LAST:event_btnAgendaEquipeADMActionPerformed
-
-    private void btnListarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarColaboradorActionPerformed
-        //quando botao for pressionado ele chama outra tela no caso ListarColaborador
-        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-        cl.show(PainelPrincipal, "listagemColab");
-    }//GEN-LAST:event_btnListarColaboradorActionPerformed
-
-    private void BtnCadastrarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarEquipeActionPerformed
-        //quando botao for pressionado ele chama outra tela no caso CadastrarEquipe
-        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-        cl.show(PainelPrincipal, "cadastrarEquipe");
-    }//GEN-LAST:event_BtnCadastrarEquipeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -623,7 +630,11 @@ public class SisLojFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SisLojFrame().setVisible(true);
+                try {
+                    new SisLojFrame().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(SisLojFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
