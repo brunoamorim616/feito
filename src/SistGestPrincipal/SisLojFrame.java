@@ -10,7 +10,7 @@ import SistGestDao.ConnectionFactory;
 import SistGestModelo.Colaborador;
 import SistGestModelo.Equipe;
 import SistGestViews.AgendaColaborador;
-import SistGestViews.AgendaEquipe;
+import SistGestViews.AgendaEquipeADM;
 import SistGestViews.CadastroColaborador;
 import SistGestViews.ListagemAgendaColaborador;
 import SistGestViews.CadastroEquipe;
@@ -38,7 +38,7 @@ public class SisLojFrame extends javax.swing.JFrame {
     /**
      * Creates new form SisLojFrame
      */
-    public SisLojFrame() {
+    public SisLojFrame() throws SQLException {
         initComponents();
         voltar.setEnabled(false);
 
@@ -188,7 +188,7 @@ public class SisLojFrame extends javax.swing.JFrame {
                     .addGroup(menuColaboradorLayout.createSequentialGroup()
                         .addComponent(lbTarefa1)
                         .addGap(16, 16, 16)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addGroup(menuColaboradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAgendaColaborador1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAgendaEquipe1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,16 +198,16 @@ public class SisLojFrame extends javax.swing.JFrame {
                     .addComponent(btnListaComproCol, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
             .addGroup(menuColaboradorLayout.createSequentialGroup()
-                .addGap(147, 147, 147)
+                .addGap(187, 187, 187)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuColaboradorLayout.setVerticalGroup(
             menuColaboradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuColaboradorLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addGroup(menuColaboradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbAgenda1)
                     .addComponent(lbTarefa1))
@@ -303,7 +303,7 @@ public class SisLojFrame extends javax.swing.JFrame {
                     .addComponent(btnListarColaborador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAdministradorLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(menuAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,27 +382,24 @@ public class SisLojFrame extends javax.swing.JFrame {
         loginPrincipalLayout.setHorizontalGroup(
             loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPrincipalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelLogin)
-                .addGap(72, 72, 72))
-            .addGroup(loginPrincipalLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labelSenha2)
                     .addComponent(labelUsuario2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelLogin)
                     .addComponent(cpUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cpSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLogin))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(299, Short.MAX_VALUE))
         );
         loginPrincipalLayout.setVerticalGroup(
             loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPrincipalLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(34, 34, 34)
                 .addComponent(labelLogin)
-                .addGap(40, 40, 40)
+                .addGap(47, 47, 47)
                 .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelUsuario2)
                     .addComponent(cpUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -410,7 +407,7 @@ public class SisLojFrame extends javax.swing.JFrame {
                 .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cpSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelSenha2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLogin)
                 .addGap(86, 86, 86))
         );
@@ -483,14 +480,16 @@ public class SisLojFrame extends javax.swing.JFrame {
         
         try {
             this.c = colDao.getColaborador(loginAux, senhaAux);
-            String aux = this.c.getTipo();
+            
             //verifica se a Senha ou usuario estao corretos 
             if(this.c == null){
+                
                 //caso errado uma linda mensagem aparece
                 String mensagem = "Senha ou usuario Incorretos";
                 
                 JOptionPane.showMessageDialog (null, mensagem);
             }else{
+                String aux = this.c.getTipo();
                 //se estiver correto outra linda mensagem aparece com o o nome do usuario 
                 String mensagem2 = "Bem vindo: "+this.c.getNome();
                 JOptionPane.showMessageDialog (null, mensagem2);
@@ -575,11 +574,14 @@ public class SisLojFrame extends javax.swing.JFrame {
        //quando botao for pressionado ele chama outra tela no caso ListarEquipe
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
        cl.show(PainelPrincipal, "listarEquipe");
+       
     }//GEN-LAST:event_btnListarEquipeActionPerformed
 
     private void btnAgendaEquipe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaEquipe1ActionPerformed
 
        //quando botao for pressionado ele chama outra tela no caso agendaEquipe
+       AgendaEquipeADM ag = new AgendaEquipeADM();
+       PainelPrincipal.add(ag, "agendaEquipe");
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
        cl.show(PainelPrincipal, "agendaEquipe");
 
@@ -587,11 +589,14 @@ public class SisLojFrame extends javax.swing.JFrame {
 
     private void btnAgendaEquipeADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaEquipeADMActionPerformed
        //quando botao for pressionado ele chama outra tela no caso agendaEquipe
-        ListagemAgendaColaborador ag = new ListagemAgendaColaborador(this.c);
-       PainelPrincipal.add(ag, "listaAgColab");
+      
+        
+        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+        AgendaEquipeADM ag = new AgendaEquipeADM();
+       PainelPrincipal.add(ag, "agendaEquipe");
 
        
-       CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+       
        cl.show(PainelPrincipal, "agendaEquipe");
     }//GEN-LAST:event_btnAgendaEquipeADMActionPerformed
 
@@ -625,7 +630,11 @@ public class SisLojFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SisLojFrame().setVisible(true);
+                try {
+                    new SisLojFrame().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(SisLojFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
