@@ -7,6 +7,7 @@ package SistGestViews;
 
 import SistGestDao.AgendaDao;
 import SistGestModelo.Agenda;
+import SistGestModelo.Equipe;
 import java.awt.CardLayout;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,19 +23,24 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListagemAgendaEquipe extends javax.swing.JPanel {
     private CardLayout cl;
-    private int idAgendaEquipe;
+    private Equipe equipe;
+    private int idAgenda;
     /**
      * Creates new form Agenda
      */
-    public ListagemAgendaEquipe() {
+    public ListagemAgendaEquipe(Equipe equipe) {
         initComponents();
-
+        this.equipe = equipe;
+        
         
         this.add(ListagemAgendaEquipe, "painelListagemAgendaEquipe");
         this.add(PainelEdicao, "painelAgendaEdicao");
         
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelListagemAgendaEquipe");
+        
+        this.popularTabela();
+        this.limparTabela();
     }
     
     private void popularTabela() {
@@ -42,7 +48,7 @@ public class ListagemAgendaEquipe extends javax.swing.JPanel {
         List<Agenda> Agenda;
 
         try {
-            Agenda = agendao.listaCompromisso();
+            Agenda = agendao.listaCompromissoEquipe(1);
 
             DefaultTableModel model = (DefaultTableModel) tblAgendaEquipe.getModel();
             List<Object> lista = new ArrayList<Object>();
@@ -50,7 +56,7 @@ public class ListagemAgendaEquipe extends javax.swing.JPanel {
             for (int i = 0; i < Agenda.size(); i++) {
                 Agenda ag = Agenda.get(i);
                 lista.add(new Object[]{ag.getIdAgenda(),ag.getDataCriacao(), ag.getDataCompromisso(), ag.getTitulo(),
-                    ag.getDescricao(), ag.getEquipe_id()});
+                    ag.getDescricao(), ag.getColaborador_id(), ag.getEquipe_id()});
                
             }
 
@@ -220,6 +226,11 @@ public class ListagemAgendaEquipe extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
+        tblAgendaEquipe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblAgendaEquipeMouseClicked(evt);
+            }
+        });
         tblAgendaEquipe.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 tblAgendaEquipeComponentShown(evt);
@@ -250,7 +261,7 @@ public class ListagemAgendaEquipe extends javax.swing.JPanel {
             AgendaDao agendao = new AgendaDao();
 
             try {
-                agendao.eliminar(idAgendaEquipe);
+                agendao.eliminar(this.equipe.getId());
                 this.limparTabela();
                 this.popularTabela();
             } catch (SQLException ex) {
@@ -262,8 +273,8 @@ public class ListagemAgendaEquipe extends javax.swing.JPanel {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         Agenda ag = new Agenda();
-
-        ag.setIdAgenda(idAgendaEquipe);
+        
+        ag.setEquipe_id(this.equipe.getId());
         ag.setDataCriacao(cpDataCriaEditar.getText());
         ag.setDataCompromisso(cpDataComprEditar.getText());
         ag.setTitulo(cpTituloEditar.getText());
@@ -286,6 +297,23 @@ public class ListagemAgendaEquipe extends javax.swing.JPanel {
         this.limparTabela();
         this.popularTabela();        
     }//GEN-LAST:event_tblAgendaEquipeComponentShown
+
+    private void tblAgendaEquipeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAgendaEquipeMouseClicked
+        //metodo de clique  na linha que o usuario ckicar vai abrir modo edicao
+        int linha = tblAgendaEquipe.getSelectedRow();
+
+        if (linha != -1) {            
+            try {
+                String codigo = tblAgendaEquipe.getValueAt(linha, 0).toString();
+                int codigoAgenda = idAgenda = Integer.parseInt(codigo);
+                this.preencherCamposEdicao(codigoAgenda);
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ListagemColaboradores.class.getName()).log(Level.SEVERE, null, ex);
+            }   
+                this.cl.show(this, "painelAgendaEdicao");
+        }
+    }//GEN-LAST:event_tblAgendaEquipeMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

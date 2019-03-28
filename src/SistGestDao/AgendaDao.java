@@ -100,30 +100,21 @@ public class AgendaDao extends ConnectionFactory  {
 
     }
     // metodo para listar todos os compromissos
-    public List<Agenda> listaCompromisso() throws SQLException {
+    public List<Agenda> listaCompromissoEquipe(int id_equipe) throws SQLException {
         // comando executado no banco de dados
-        String sql = "select * from agenda";
+        String sql = "select * from agenda where equipe_id = ?";
 
         List<Agenda> agenda = null;
-
-
-        
         List<Agenda> clientes = null;
         // executa a linha do banco de dados
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
+            st.setInt(1, id_equipe);
             ResultSet rs = st.executeQuery();
-
-
             agenda = new ArrayList<Agenda>();
-            
-
-
             // cria um array list agenda
             clientes = new ArrayList<Agenda>();
-            
             //coleta os dados para o banco de dados 
-
             while (rs.next()) {
                 Agenda c = new Agenda();
                 c.setIdAgenda(rs.getInt("idAgenda"));
@@ -165,8 +156,7 @@ public class AgendaDao extends ConnectionFactory  {
             st.setInt(1, id_colaborador);
             ResultSet rs = st.executeQuery();
               // cria um array list agenda
-            agenda = new ArrayList<Agenda>();
-            
+            agenda = new ArrayList<Agenda>();           
 
             while (rs.next()) {
                 //coleta os dados para o banco de dados

@@ -45,6 +45,8 @@ public class AgendaEquipeADM extends javax.swing.JPanel {
         cpDataCompr = new javax.swing.JFormattedTextField();
         cpCodigoEquipe = new javax.swing.JTextField();
         lblCodEquipe = new javax.swing.JLabel();
+        lblCodCOlaborador = new javax.swing.JLabel();
+        cpCodigoColaborador = new javax.swing.JTextField();
 
         labelEndereco.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelEndereco.setText("Data Compromisso:");
@@ -107,42 +109,52 @@ public class AgendaEquipeADM extends javax.swing.JPanel {
         lblCodEquipe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblCodEquipe.setText("Codigo equipe:");
 
+        lblCodCOlaborador.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCodCOlaborador.setText("Codigo colaborador:");
+
+        cpCodigoColaborador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpCodigoColaboradorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbAgendaEquipe)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelDataCria)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cpDataCria, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(labelEndereco)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cpDataCompr, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblCodEquipe)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cpCodigoEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(104, 104, 104)
-                                .addComponent(cpTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(76, 76, 76)
-                                .addComponent(btnSalvar2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1874, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(labelDataCria)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cpDataCria, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(labelEndereco)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cpDataCompr, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblCodEquipe)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cpCodigoEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCodCOlaborador)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cpCodigoColaborador, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(cpTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnSalvar2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1874, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(27, 27, 27)
                 .addComponent(lbAgendaEquipe)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cpDataCompr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelEndereco)
@@ -151,7 +163,9 @@ public class AgendaEquipeADM extends javax.swing.JPanel {
                     .addComponent(cpDataCria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelDataCria)
                     .addComponent(cpTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvar2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSalvar2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpCodigoColaborador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCodCOlaborador))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 809, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(94, 94, 94))
@@ -161,6 +175,7 @@ public class AgendaEquipeADM extends javax.swing.JPanel {
     private void btnSalvar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar2ActionPerformed
         //vincula uma pagina 
         int codigoEquipeConvertida = Integer.parseInt(cpCodigoEquipe.getText());
+        int codigoColaboradorConvertido = Integer.parseInt(cpCodigoColaborador.getText());
         Agenda agenda = new Agenda();
         //puxa os dados do campo e seta em variaveis
         agenda.setDataCriacao(cpDataCria.getText());
@@ -169,6 +184,7 @@ public class AgendaEquipeADM extends javax.swing.JPanel {
         agenda.setDescricao(cpDescricao.getText());
 
         agenda.setEquipe_id(codigoEquipeConvertida);
+        agenda.setColaborador_id(codigoColaboradorConvertido);
 
         //Inserção do compromisso no DB
         AgendaDao agenDao = new AgendaDao();
@@ -197,9 +213,14 @@ public class AgendaEquipeADM extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cpTituloActionPerformed
 
+    private void cpCodigoColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpCodigoColaboradorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cpCodigoColaboradorActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar2;
+    private javax.swing.JTextField cpCodigoColaborador;
     private javax.swing.JTextField cpCodigoEquipe;
     private javax.swing.JFormattedTextField cpDataCompr;
     private javax.swing.JFormattedTextField cpDataCria;
@@ -209,6 +230,7 @@ public class AgendaEquipeADM extends javax.swing.JPanel {
     private javax.swing.JLabel labelDataCria;
     private javax.swing.JLabel labelEndereco;
     private javax.swing.JLabel lbAgendaEquipe;
+    private javax.swing.JLabel lblCodCOlaborador;
     private javax.swing.JLabel lblCodEquipe;
     // End of variables declaration//GEN-END:variables
 }

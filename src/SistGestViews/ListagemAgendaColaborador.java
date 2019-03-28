@@ -27,36 +27,41 @@ import javax.swing.table.DefaultTableModel;
 //metodo para listagem da agenda do colaborador
 public class ListagemAgendaColaborador extends javax.swing.JPanel {
     private CardLayout cl;
-    private int idAgendaColaborador;
+    private int idC;
+    private Colaborador colaborador;
     /**
      * Creates new form Agenda
      */
-    public ListagemAgendaColaborador() {
+    public ListagemAgendaColaborador(Colaborador colaborador) {
         initComponents();
-
+        this.colaborador = colaborador;
         
         this.add(painelListagemAgendaColaborador, "painelListagemAgendaColaborador");
         this.add(painelAgendaColaboradorEdicao, "painelAgendaEdicao");
         
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelListagemAgendaColaborador");
+        
+        this.popularTabela();
+        this.limparTabela();
     }
     
     private void popularTabela() {
         AgendaDao agendao = new AgendaDao();
-        List<Agenda> Agenda;
+        List<Agenda> ListagemAgenda;
 
         try {
-            Agenda = agendao.listaCompromisso();
+            ListagemAgenda = agendao.listaCompromisso(this.colaborador.getId());
 
             DefaultTableModel model = (DefaultTableModel) tblAgenda.getModel();
             List<Object> lista = new ArrayList<Object>();
-            //varre o banco de dados e seta a ordem que ira a parecer na tela 
-            for (int i = 0; i < Agenda.size(); i++) {
-                Agenda ag = Agenda.get(i);
-                lista.add(new Object[]{ag.getIdAgenda(),ag.getDataCriacao(), ag.getDataCompromisso(), ag.getTitulo(),
-                    ag.getDescricao(), ag.getColaborador_id()});
+
+            for (int i = 0; i < ListagemAgenda.size(); i++) {
+                Agenda ag = ListagemAgenda.get(i);
+                lista.add(new Object[]{ag.getIdAgenda(), ag.getDataCriacao(), ag.getDataCompromisso(), ag.getTitulo(), ag.getDescricao(),
+                ag.getColaborador_id(), ag.getEquipe_id()});
                
+
             }
 
             for (int idx = 0; idx < lista.size(); idx++) {
@@ -64,7 +69,7 @@ public class ListagemAgendaColaborador extends javax.swing.JPanel {
             }
 
         } catch (SQLException ex) {
-            String msg = "Erro ao obter dados!";
+            String msg = "Erro ao obter dados";
             JOptionPane.showMessageDialog(null, msg);
             Logger.getLogger(ListagemColaboradores.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -256,7 +261,7 @@ public class ListagemAgendaColaborador extends javax.swing.JPanel {
         if (linha != -1) {            
             try {
                 String codigo = tblAgenda.getValueAt(linha, 0).toString();
-                int codigoAgenda = this.idAgendaColaborador = Integer.parseInt(codigo);
+                int codigoAgenda = this.idC = Integer.parseInt(codigo);
                 this.preencherCamposEdicao(codigoAgenda);
                 
             } catch (SQLException ex) {
@@ -280,7 +285,7 @@ public class ListagemAgendaColaborador extends javax.swing.JPanel {
             AgendaDao agendao = new AgendaDao();
             
             try {
-                agendao.eliminar(idAgendaColaborador);              
+                agendao.eliminar(this.idC);              
                 this.limparTabela();
                 this.popularTabela();
             } catch (SQLException ex) {
@@ -293,7 +298,7 @@ public class ListagemAgendaColaborador extends javax.swing.JPanel {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         Agenda ag = new Agenda();
         
-        ag.setIdAgenda(idAgendaColaborador);
+        ag.setIdAgenda(this.colaborador.getId());
         ag.setDataCriacao(cpDataCriaEditar.getText());
         ag.setDataCompromisso(cpDataComprEditar.getText());
         ag.setTitulo(cpTituloEditar.getText());

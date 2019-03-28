@@ -7,6 +7,7 @@ package SistGestPrincipal;
 
 import SistGestDao.ColaboradorDao;
 import SistGestDao.ConnectionFactory;
+import SistGestModelo.Agenda;
 import SistGestModelo.Colaborador;
 import SistGestModelo.Equipe;
 import SistGestViews.AgendaColaboradorADM;
@@ -35,7 +36,7 @@ public class SisLojFrame extends javax.swing.JFrame {
     
     Colaborador c;
     Equipe eq;
-    
+    Agenda ag;
     /**
      * Creates new form SisLojFrame
      */
@@ -101,7 +102,7 @@ public class SisLojFrame extends javax.swing.JFrame {
         lbAgenda1 = new javax.swing.JLabel();
         btnAgendaEquipe1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnListaComproCol = new javax.swing.JButton();
+        btnListarAgendaCoaboradorl = new javax.swing.JButton();
         menuAdministrador = new javax.swing.JPanel();
         lbAgenda = new javax.swing.JLabel();
         lbEquipe = new javax.swing.JLabel();
@@ -119,8 +120,8 @@ public class SisLojFrame extends javax.swing.JFrame {
         labelSenha2 = new javax.swing.JLabel();
         cpUsuario2 = new javax.swing.JTextField();
         labelLogin = new javax.swing.JLabel();
-        cpSenha = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
+        cpSenha = new javax.swing.JPasswordField();
         barraDeMenu = new javax.swing.JMenuBar();
         opcaoVoltar = new javax.swing.JMenu();
         voltar = new javax.swing.JMenuItem();
@@ -153,11 +154,11 @@ public class SisLojFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel1.setText("MENU DO COLABORADOR");
 
-        btnListaComproCol.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnListaComproCol.setText("SUA AGENDA");
-        btnListaComproCol.addActionListener(new java.awt.event.ActionListener() {
+        btnListarAgendaCoaboradorl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnListarAgendaCoaboradorl.setText("SUA AGENDA");
+        btnListarAgendaCoaboradorl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListaComproColActionPerformed(evt);
+                btnListarAgendaCoaboradorlActionPerformed(evt);
             }
         });
 
@@ -173,7 +174,7 @@ public class SisLojFrame extends javax.swing.JFrame {
                         .addGroup(menuColaboradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuColaboradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(btnAgendaColaborador1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnListaComproCol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnListarAgendaCoaboradorl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnAgendaEquipe1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuColaboradorLayout.createSequentialGroup()
                                 .addComponent(lbAgenda1)
@@ -191,7 +192,7 @@ public class SisLojFrame extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(btnAgendaColaborador1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnListaComproCol)
+                .addComponent(btnListarAgendaCoaboradorl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAgendaEquipe1)
                 .addContainerGap(477, Short.MAX_VALUE))
@@ -244,7 +245,7 @@ public class SisLojFrame extends javax.swing.JFrame {
         });
 
         btnListarEquipe.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnListarEquipe.setText("Listar");
+        btnListarEquipe.setText("LISTAR");
         btnListarEquipe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListarEquipeActionPerformed(evt);
@@ -346,12 +347,6 @@ public class SisLojFrame extends javax.swing.JFrame {
 
         labelLogin.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
 
-        cpSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cpSenhaActionPerformed(evt);
-            }
-        });
-
         btnLogin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnLogin.setText("LOGIN");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -371,18 +366,18 @@ public class SisLojFrame extends javax.swing.JFrame {
                         .addComponent(labelUsuario2)
                         .addGap(888, 888, 888))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPrincipalLayout.createSequentialGroup()
+                        .addComponent(btnLogin)
+                        .addGap(859, 859, 859))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPrincipalLayout.createSequentialGroup()
                         .addComponent(labelLogin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPrincipalLayout.createSequentialGroup()
                                 .addComponent(labelSenha2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(87, 87, 87))
-                            .addComponent(cpSenha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cpUsuario2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(800, 800, 800))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPrincipalLayout.createSequentialGroup()
-                        .addComponent(btnLogin)
-                        .addGap(859, 859, 859))))
+                            .addComponent(cpUsuario2, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                            .addComponent(cpSenha))
+                        .addGap(800, 800, 800))))
         );
         loginPrincipalLayout.setVerticalGroup(
             loginPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -457,10 +452,6 @@ public class SisLojFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cpUsuario2ActionPerformed
 
-    private void cpSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cpSenhaActionPerformed
-
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         //criacao de um metodo para verificar usuario e senha
         String senhaAux="",loginAux="";
@@ -526,21 +517,20 @@ public class SisLojFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListarColaboradorActionPerformed
 
     private void btnAgendaColaborador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaColaborador1ActionPerformed
-        //quando botao for pressionado ele chama outra tela no caso AgendaColaborador
         AgendaColaboradorADM agencolab = new AgendaColaboradorADM();
         PainelPrincipal.add(agencolab, "agendaColaborador");
-
+        //quando botao for pressionado ele chama outra tela no caso AgendaColaborador
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
         cl.show(PainelPrincipal, "agendaColaborador");
     }//GEN-LAST:event_btnAgendaColaborador1ActionPerformed
 
-    private void btnListaComproColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaComproColActionPerformed
-       ListagemAgendaColaborador ag = new ListagemAgendaColaborador();
+    private void btnListarAgendaCoaboradorlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarAgendaCoaboradorlActionPerformed
+       ListagemAgendaColaborador ag = new ListagemAgendaColaborador(this.c);
        PainelPrincipal.add(ag, "listagemAgColab");
        //quando botao for pressionado ele chama outra tela no caso ListaComproColA
        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
        cl.show(PainelPrincipal, "listagemAgColab");
-    }//GEN-LAST:event_btnListaComproColActionPerformed
+    }//GEN-LAST:event_btnListarAgendaCoaboradorlActionPerformed
 
     private void btnListaComproAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaComproAdmActionPerformed
         // TODO add your handling code here:
@@ -565,7 +555,7 @@ public class SisLojFrame extends javax.swing.JFrame {
 
     private void btnAgendaEquipe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaEquipe1ActionPerformed
        //quando botao for pressionado ele chama outra tela no caso agendaEquipe
-       ListagemAgendaEquipe ag = new ListagemAgendaEquipe();
+       ListagemAgendaEquipe ag = new ListagemAgendaEquipe(this.eq);
        PainelPrincipal.add(ag, "agendaEquipe");
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
        cl.show(PainelPrincipal, "agendaEquipe");
@@ -627,11 +617,11 @@ public class SisLojFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnAgendaEquipe1;
     private javax.swing.JButton btnAgendaEquipeADM;
     private javax.swing.JButton btnCadastrarColaborador;
-    private javax.swing.JButton btnListaComproCol;
+    private javax.swing.JButton btnListarAgendaCoaboradorl;
     private javax.swing.JButton btnListarColaborador;
     private javax.swing.JButton btnListarEquipe;
     private javax.swing.JButton btnLogin;
-    private javax.swing.JTextField cpSenha;
+    private javax.swing.JPasswordField cpSenha;
     private javax.swing.JTextField cpUsuario2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
