@@ -38,7 +38,6 @@ public class CadastroColaborador extends javax.swing.JPanel {
         cpCidade = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         lEstado = new javax.swing.JLabel();
-        cpCep = new javax.swing.JTextField();
         lUsuario = new javax.swing.JLabel();
         cpBairro = new javax.swing.JTextField();
         cpUsuario = new javax.swing.JTextField();
@@ -49,7 +48,6 @@ public class CadastroColaborador extends javax.swing.JPanel {
         lBairro = new javax.swing.JLabel();
         separador1 = new javax.swing.JSeparator();
         cpSenha = new javax.swing.JPasswordField();
-        cpTelefone = new javax.swing.JTextField();
         lRua = new javax.swing.JLabel();
         lNome = new javax.swing.JLabel();
         separador2 = new javax.swing.JSeparator();
@@ -60,6 +58,8 @@ public class CadastroColaborador extends javax.swing.JPanel {
         cpTipo = new javax.swing.JTextField();
         lbEquipeId = new javax.swing.JLabel();
         cpEquipeId = new javax.swing.JTextField();
+        cpCep = new javax.swing.JFormattedTextField();
+        cpTelefone = new javax.swing.JFormattedTextField();
 
         btnCadastrar.setText("Cadastrar-se");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,6 +111,18 @@ public class CadastroColaborador extends javax.swing.JPanel {
 
         lbEquipeId.setText("Equipe:");
 
+        try {
+            cpCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            cpTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,34 +137,6 @@ public class CadastroColaborador extends javax.swing.JPanel {
                                 .addComponent(lNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cpNome))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lEstado)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cpEstado))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lCEP)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cpCep, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lBairro)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cpBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lTelefone)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cpTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lCidade)
-                                            .addComponent(lRua))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(cpRua, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
-                                            .addComponent(cpCidade)))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
@@ -167,13 +151,42 @@ public class CadastroColaborador extends javax.swing.JPanel {
                                         .addComponent(lbEquipeId)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cpEquipeId, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 687, Short.MAX_VALUE)
                                         .addComponent(lSenha)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cpSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cpTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(14, 14, 14))))
+                                .addGap(14, 14, 14))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lEstado)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cpEstado))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lCEP)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cpCep, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lBairro)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cpBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lTelefone)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cpTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lCidade)
+                                            .addComponent(lRua))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(cpRua, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                                            .addComponent(cpCidade))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnCadastrar)))
@@ -224,11 +237,11 @@ public class CadastroColaborador extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lRua)
                             .addComponent(cpRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cpCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lCEP))))
+                            .addComponent(lCEP)
+                            .addComponent(cpCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(separador2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
                 .addComponent(btnCadastrar)
                 .addContainerGap())
         );
@@ -246,12 +259,20 @@ public class CadastroColaborador extends javax.swing.JPanel {
         col.setUsuario(cpUsuario.getText());
         col.setSenha(cpSenha.getText());
         col.setEstado(cpEstado.getText());
-        col.setTelefone(cpTelefone.getText());
         col.setBairro(cpBairro.getText());
         col.setCidade(cpCidade.getText());
-        col.setCep(cpCep.getText());
         col.setRua(cpRua.getText());
         col.setNome(cpNome.getText());
+        
+        String cep = cpCep.getText();
+        cep = cep.replaceAll("[^0-9]", "");
+        String celular = cpTelefone.getText();
+        celular = celular.replaceAll("[^0-9]", "");
+        
+        col.setCep(Long.parseLong(cep));
+        col.setTelefone(Long.parseLong(celular));
+        
+        
 
         //Inserção do colaborador no DB
         ColaboradorDao colDao = new ColaboradorDao();
@@ -281,14 +302,14 @@ public class CadastroColaborador extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JTextField cpBairro;
-    private javax.swing.JTextField cpCep;
+    private javax.swing.JFormattedTextField cpCep;
     private javax.swing.JTextField cpCidade;
     private javax.swing.JTextField cpEquipeId;
     private javax.swing.JTextField cpEstado;
     private javax.swing.JTextField cpNome;
     private javax.swing.JTextField cpRua;
     private javax.swing.JPasswordField cpSenha;
-    private javax.swing.JTextField cpTelefone;
+    private javax.swing.JFormattedTextField cpTelefone;
     private javax.swing.JTextField cpTipo;
     private javax.swing.JTextField cpUsuario;
     private javax.swing.JLabel jLabel10;

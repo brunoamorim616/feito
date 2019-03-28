@@ -61,13 +61,6 @@ public class SisLojFrame extends javax.swing.JFrame {
         ListagemColaboradores list = new ListagemColaboradores();
         
         
-       
-        
-        
-        
-        
-
-
         //adiciona todas as paginas no metodo construtor
         PainelPrincipal.add(cad, "cadColab");
 
@@ -521,8 +514,10 @@ public class SisLojFrame extends javax.swing.JFrame {
 
     private void btnAgendaColaboradorADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaColaboradorADMActionPerformed
         //quando botao for pressionado ele chama outra tela no caso agendacolaborador
-        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-        cl.show(PainelPrincipal, "agendaColaborador");
+       CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+       AgendaColaboradorADM ag = new AgendaColaboradorADM();
+       PainelPrincipal.add(ag, "agendaColaborador");
+       cl.show(PainelPrincipal, "agendaColaborador");
     }//GEN-LAST:event_btnAgendaColaboradorADMActionPerformed
 
     private void btnCadastrarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarColaboradorActionPerformed
@@ -591,14 +586,9 @@ public class SisLojFrame extends javax.swing.JFrame {
 
     private void btnAgendaEquipeADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaEquipeADMActionPerformed
        //quando botao for pressionado ele chama outra tela no caso agendaEquipe
-      
-        
-        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
-        AgendaEquipeADM ag = new AgendaEquipeADM();
+       CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
+       AgendaEquipeADM ag = new AgendaEquipeADM();
        PainelPrincipal.add(ag, "agendaEquipe");
-
-       
-       
        cl.show(PainelPrincipal, "agendaEquipe");
     }//GEN-LAST:event_btnAgendaEquipeADMActionPerformed
 

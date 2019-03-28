@@ -55,7 +55,7 @@ public class ListagemColaboradores extends javax.swing.JPanel {
                 Colaborador c = ListagemColaboradores.get(i);
                 lista.add(new Object[]{c.getId() ,c.getUsuario(), c.getSenha(), c.getNome(),
                     c.getRua(), c.getBairro(),c.getCep(),
-                    c.getCidade(), c.getEstado(), c.getTelefone()});
+                    c.getCidade(), c.getEstado(), c.getTelefone(), c.getEquipe_id()});
                
 
             }
@@ -82,11 +82,11 @@ public class ListagemColaboradores extends javax.swing.JPanel {
             cpUsuario.setText(colaborador2.getUsuario());
             cpSenha.setText(colaborador2.getSenha());
             cpBairro.setText(colaborador2.getBairro());
-            cpCep.setText(colaborador2.getCep());
             cpCidade.setText(colaborador2.getCidade());
             cpEstado.setText(colaborador2.getEstado());
-            cpTelefone.setText(colaborador2.getTelefone());
             cpTipo.setText(colaborador2.getTipo());
+            cpCep.setText(""+colaborador2.getCep());
+            cpTelefone.setText(""+colaborador2.getTelefone());
             
     }
 
@@ -112,7 +112,6 @@ public class ListagemColaboradores extends javax.swing.JPanel {
         cpCidade = new javax.swing.JTextField();
         lbEdicao = new javax.swing.JLabel();
         lbEstado = new javax.swing.JLabel();
-        cpCep = new javax.swing.JTextField();
         lbUsuario = new javax.swing.JLabel();
         cpBairro = new javax.swing.JTextField();
         cpUsuario = new javax.swing.JTextField();
@@ -123,7 +122,6 @@ public class ListagemColaboradores extends javax.swing.JPanel {
         lbBairro = new javax.swing.JLabel();
         separador1 = new javax.swing.JSeparator();
         cpSenha = new javax.swing.JPasswordField();
-        cpTelefone = new javax.swing.JTextField();
         lbRua = new javax.swing.JLabel();
         lbNome = new javax.swing.JLabel();
         separador2 = new javax.swing.JSeparator();
@@ -136,6 +134,8 @@ public class ListagemColaboradores extends javax.swing.JPanel {
         cpEquipeId = new javax.swing.JTextField();
         btnEliminarColaborador = new javax.swing.JToggleButton();
         btnCancelar = new javax.swing.JButton();
+        cpTelefone = new javax.swing.JFormattedTextField();
+        cpCep = new javax.swing.JFormattedTextField();
 
         setLayout(new java.awt.CardLayout());
 
@@ -150,14 +150,14 @@ public class ListagemColaboradores extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Código", "Usuário", "Senha", "Nome", "Rua", "Bairro", "CEP", "Cidade", "Estado", "Telefone"
+                "Código", "Usuário", "Senha", "Nome", "Rua", "Bairro", "CEP", "Cidade", "Estado", "Telefone", "id da Equipe"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false, false, false, false
+                true, false, false, false, false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -202,8 +202,6 @@ public class ListagemColaboradores extends javax.swing.JPanel {
 
         lbEstado.setText("Estado:");
 
-        cpCep.setText("jTextField2");
-
         lbUsuario.setText("Usuário:");
 
         cpBairro.setText("jTextField7");
@@ -224,8 +222,6 @@ public class ListagemColaboradores extends javax.swing.JPanel {
         lbBairro.setText("Bairro:");
 
         cpSenha.setText("jPasswordField1");
-
-        cpTelefone.setText("jTextField4");
 
         lbRua.setText("Rua:");
 
@@ -255,6 +251,18 @@ public class ListagemColaboradores extends javax.swing.JPanel {
             }
         });
 
+        try {
+            cpTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            cpCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout painelEdicaoLayout = new javax.swing.GroupLayout(painelEdicao);
         painelEdicao.setLayout(painelEdicaoLayout);
         painelEdicaoLayout.setHorizontalGroup(
@@ -281,13 +289,9 @@ public class ListagemColaboradores extends javax.swing.JPanel {
                             .addGroup(painelEdicaoLayout.createSequentialGroup()
                                 .addComponent(lbCEP)
                                 .addGap(18, 18, 18)
-                                .addComponent(cpCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(72, 72, 72)
+                                .addComponent(cpCep, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelEdicaoLayout.createSequentialGroup()
-                                .addComponent(lbTelefone)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cpTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(painelEdicaoLayout.createSequentialGroup()
                                 .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbCidade)
@@ -295,8 +299,12 @@ public class ListagemColaboradores extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cpRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cpCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 239, Short.MAX_VALUE))
+                                    .addComponent(cpCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(painelEdicaoLayout.createSequentialGroup()
+                                .addComponent(lbTelefone)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cpTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdicaoLayout.createSequentialGroup()
                         .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(painelEdicaoLayout.createSequentialGroup()
@@ -319,7 +327,7 @@ public class ListagemColaboradores extends javax.swing.JPanel {
                             .addComponent(cpTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(14, 14, 14))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdicaoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 163, Short.MAX_VALUE)
                         .addComponent(btnEliminarColaborador)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEditar)
@@ -353,14 +361,6 @@ public class ListagemColaboradores extends javax.swing.JPanel {
                 .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelEdicaoLayout.createSequentialGroup()
                         .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbEstado)
-                            .addComponent(cpEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbBairro)
-                            .addComponent(cpBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(painelEdicaoLayout.createSequentialGroup()
-                        .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbTelefone)
                             .addComponent(cpTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
@@ -371,8 +371,16 @@ public class ListagemColaboradores extends javax.swing.JPanel {
                         .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbRua)
                             .addComponent(cpRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cpCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbCEP))))
+                            .addComponent(lbCEP)
+                            .addComponent(cpCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(painelEdicaoLayout.createSequentialGroup()
+                        .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbEstado)
+                            .addComponent(cpEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbBairro)
+                            .addComponent(cpBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(separador2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -416,25 +424,27 @@ public class ListagemColaboradores extends javax.swing.JPanel {
         col.setUsuario(cpUsuario.getText());
         col.setSenha(cpSenha.getText());
         col.setEstado(cpEstado.getText());
-        col.setTelefone(cpTelefone.getText());
         col.setBairro(cpBairro.getText());
         col.setCidade(cpCidade.getText());
-        col.setCep(cpCep.getText());
         col.setRua(cpRua.getText());
         col.setNome(cpNome.getText());
         col.setId(idColaborador);
+        
+        String cep = cpCep.getText();
+        cep = cep.replaceAll("[^0-9]", "");
+        String celular = cpTelefone.getText();
+        celular = celular.replaceAll("[^0-9]", "");
+        
+        col.setCep(Long.parseLong(cep));
+        col.setTelefone(Long.parseLong(celular));
 
         //Inserção do colaborador no DB
         ColaboradorDao colDao = new ColaboradorDao();
         try {
             colDao.alterar(col);
-            this.cl.show(this, "painelListagem");            
-            this.limparTabela();
-            this.popularTabela();
+            this.cl.show(this, "painelListagem");
             JOptionPane.showMessageDialog(null, "Colaborador alterado com sucesso !");
         } catch (SQLException ex) {
-            this.limparTabela();
-            this.popularTabela();
             this.cl.show(this, "painelListagem");
             JOptionPane.showMessageDialog(null, "Falha ao alterar o colaborador !");
             Logger.getLogger(CadastroColaborador.class.getName()).log(Level.SEVERE, null, ex);
@@ -480,14 +490,14 @@ public class ListagemColaboradores extends javax.swing.JPanel {
     private javax.swing.JButton btnEditar;
     private javax.swing.JToggleButton btnEliminarColaborador;
     private javax.swing.JTextField cpBairro;
-    private javax.swing.JTextField cpCep;
+    private javax.swing.JFormattedTextField cpCep;
     private javax.swing.JTextField cpCidade;
     private javax.swing.JTextField cpEquipeId;
     private javax.swing.JTextField cpEstado;
     private javax.swing.JTextField cpNome;
     private javax.swing.JTextField cpRua;
     private javax.swing.JPasswordField cpSenha;
-    private javax.swing.JTextField cpTelefone;
+    private javax.swing.JFormattedTextField cpTelefone;
     private javax.swing.JTextField cpTipo;
     private javax.swing.JTextField cpUsuario;
     private javax.swing.JScrollPane jScrollPane1;

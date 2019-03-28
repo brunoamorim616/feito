@@ -13,15 +13,15 @@ public class Colaborador {
     private String bairro;
     private String cidade;
     private String estado;
-    private String cep;
-    private String telefone;
-    
-    public void setId(int id) {
-        this.id = id;
-    }
+    private Long cep;
+    private Long telefone;
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getEquipe_id() {
@@ -96,21 +96,27 @@ public class Colaborador {
         this.estado = estado;
     }
 
-    public String getCep() {
+    public Long getCep() {
         return cep;
     }
 
-    public void setCep(String cep) {
+    public void setCep(Long cep) {
         this.cep = cep;
     }
 
-    public String getTelefone() {
+    public Long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(Long telefone) {
         this.telefone = telefone;
     }
+
+   
+
+    
+    
+   
 
    
     

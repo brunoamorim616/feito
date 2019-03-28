@@ -33,10 +33,10 @@ public class ColaboradorDao extends ConnectionFactory {
             st.setString(3, col.getNome());
             st.setString(4, col.getRua());
             st.setString(5, col.getBairro());
-            st.setString(6, col.getCep());
+            st.setLong(6, col.getCep());
             st.setString(7, col.getCidade());
             st.setString(8, col.getEstado());
-            st.setString(9, col.getTelefone());
+            st.setLong(9, col.getTelefone());
             st.setString(10, col.getTipo());
             st.setInt(11, col.getEquipe_id());
 
@@ -64,13 +64,13 @@ public class ColaboradorDao extends ConnectionFactory {
                     c.setId(rs.getInt("id"));
                     c.setTipo(rs.getString("tipo"));
                     c.setBairro(rs.getString("bairro"));
-                    c.setCep(rs.getString("cep"));
+                    c.setCep(rs.getLong("cep"));
                     c.setCidade(rs.getString("cidade"));
                     c.setEquipe_id(rs.getInt("equipe_id"));
                     c.setEstado(rs.getString("estado"));
                     c.setNome(rs.getString("nome"));
                     c.setRua(rs.getString("rua"));
-                    c.setTelefone(rs.getString("telefone"));
+                    c.setTelefone(rs.getLong("telefone"));
                     c.setSenha(rs.getString("senha"));
                     c.setUsuario(rs.getString("usuario"));
                 }
@@ -102,13 +102,13 @@ public class ColaboradorDao extends ConnectionFactory {
                     c.setId(rs.getInt("id"));
                     c.setTipo(rs.getString("tipo"));
                     c.setBairro(rs.getString("bairro"));
-                    c.setCep(rs.getString("cep"));
+                    c.setCep(rs.getLong("cep"));
                     c.setCidade(rs.getString("cidade"));
                     c.setEquipe_id(rs.getInt("equipe_id"));
                     c.setEstado(rs.getString("estado"));
                     c.setNome(rs.getString("nome"));
                     c.setRua(rs.getString("rua"));
-                    c.setTelefone(rs.getString("telefone"));
+                    c.setTelefone(rs.getLong("telefone"));
                     c.setSenha(rs.getString("senha"));
                     c.setUsuario(rs.getString("usuario"));
                 }
@@ -145,8 +145,8 @@ public class ColaboradorDao extends ConnectionFactory {
                 c.setBairro(rs.getString("bairro"));
                 c.setCidade(rs.getString("cidade"));
                 c.setEstado(rs.getString("estado"));
-                c.setCep(rs.getString("cep"));
-                c.setTelefone(rs.getString("telefone"));
+                c.setCep(rs.getLong("cep"));
+                c.setTelefone(rs.getLong("telefone"));
                 // add um novo colaborador para o array list 
                 colaborador.add(c);
             }
@@ -179,10 +179,10 @@ public class ColaboradorDao extends ConnectionFactory {
             st.setString(3, col.getNome());
             st.setString(4, col.getRua());
             st.setString(5, col.getBairro());
-            st.setString(6, col.getCep());
+            st.setLong(6, col.getCep());
             st.setString(7, col.getCidade());
             st.setString(8, col.getEstado());
-            st.setString(9, col.getTelefone());
+            st.setLong(9, col.getTelefone());
             st.setString(10, col.getTipo());
             st.setInt(11, col.getEquipe_id());
             st.setInt(12, col.getId());

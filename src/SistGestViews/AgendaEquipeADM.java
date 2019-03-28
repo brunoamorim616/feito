@@ -46,8 +46,6 @@ public class AgendaEquipeADM extends javax.swing.JPanel {
         cpDataCompr = new javax.swing.JFormattedTextField();
         cpCodigoEquipe = new javax.swing.JTextField();
         lblCodEquipe = new javax.swing.JLabel();
-        cpIdColaborador = new javax.swing.JTextField();
-        lblIdColaborador = new javax.swing.JLabel();
 
         labelEndereco.setText("Data Compromisso:");
 
@@ -100,8 +98,6 @@ public class AgendaEquipeADM extends javax.swing.JPanel {
 
         lblCodEquipe.setText("Codigo equipe:");
 
-        lblIdColaborador.setText("ID Colab");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,10 +121,7 @@ public class AgendaEquipeADM extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(labelEndereco))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblIdColaborador)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cpIdColaborador, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(0, 0, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblCodEquipe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -154,9 +147,7 @@ public class AgendaEquipeADM extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cpCodigoEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCodEquipe)
-                    .addComponent(cpIdColaborador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblIdColaborador))
+                    .addComponent(lblCodEquipe))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cpDataCompr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,14 +165,12 @@ public class AgendaEquipeADM extends javax.swing.JPanel {
     private void btnSalvar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar2ActionPerformed
         //vincula uma pagina 
         int codigoEquipeConvertida = Integer.parseInt(cpCodigoEquipe.getText());
-        int idColaboradorConvertida = Integer.parseInt(cpIdColaborador.getText());
         Agenda agenda = new Agenda();
         //puxa os dados do campo e seta em variaveis
         agenda.setDataCriacao(cpDataCria.getText());
         agenda.setDataCompromisso(cpDataCompr.getText());
         agenda.setTitulo(cpTitulo.getText());
         agenda.setDescricao(cpDescricao.getText());
-        agenda.setColaborador_id(idColaboradorConvertida);
 
         agenda.setEquipe_id(codigoEquipeConvertida);
 
@@ -215,13 +204,11 @@ public class AgendaEquipeADM extends javax.swing.JPanel {
     private javax.swing.JFormattedTextField cpDataCompr;
     private javax.swing.JFormattedTextField cpDataCria;
     private javax.swing.JTextArea cpDescricao;
-    private javax.swing.JTextField cpIdColaborador;
     private javax.swing.JTextField cpTitulo;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelDataCria;
     private javax.swing.JLabel labelEndereco;
     private javax.swing.JLabel lbAgendaEquipe;
     private javax.swing.JLabel lblCodEquipe;
-    private javax.swing.JLabel lblIdColaborador;
     // End of variables declaration//GEN-END:variables
 }

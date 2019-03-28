@@ -49,7 +49,7 @@
             <Component class="javax.swing.JTable" name="tblColaborador">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="10" rowCount="0">
+                  <Table columnCount="11" rowCount="0">
                     <Column editable="true" title="C&#xf3;digo" type="java.lang.Integer"/>
                     <Column editable="false" title="Usu&#xe1;rio" type="java.lang.String"/>
                     <Column editable="false" title="Senha" type="java.lang.String"/>
@@ -60,10 +60,16 @@
                     <Column editable="false" title="Cidade" type="java.lang.String"/>
                     <Column editable="false" title="Estado" type="java.lang.String"/>
                     <Column editable="false" title="Telefone" type="java.lang.String"/>
+                    <Column editable="true" title="id da Equipe" type="java.lang.Integer"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -163,16 +169,11 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lbCEP" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="cpCep" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cpCep" min="-2" pref="73" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lbTelefone" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="cpTelefone" min="-2" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lbCidade" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -184,8 +185,13 @@
                                       <Component id="cpCidade" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lbTelefone" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cpTelefone" min="-2" pref="120" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="0" pref="239" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -214,7 +220,7 @@
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="163" max="32767" attributes="0"/>
                           <Component id="btnEliminarColaborador" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnEditar" min="-2" max="-2" attributes="0"/>
@@ -255,17 +261,6 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cpEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbBairro" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cpBairro" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lbTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cpTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -278,8 +273,19 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lbRua" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cpRua" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cpCep" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lbCEP" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cpCep" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lbEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cpEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lbBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cpBairro" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -321,11 +327,6 @@
         <Component class="javax.swing.JLabel" name="lbEstado">
           <Properties>
             <Property name="text" type="java.lang.String" value="Estado:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="cpCep">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField2"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbUsuario">
@@ -373,11 +374,6 @@
         <Component class="javax.swing.JPasswordField" name="cpSenha">
           <Properties>
             <Property name="text" type="java.lang.String" value="jPasswordField1"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="cpTelefone">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField4"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbRua">
@@ -436,6 +432,20 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="cpTelefone">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="(##)#####-####" subtype="-1" type="5"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="cpCep">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="#####-###" subtype="-1" type="5"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
