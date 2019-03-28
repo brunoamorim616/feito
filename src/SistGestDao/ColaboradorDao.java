@@ -36,7 +36,7 @@ public class ColaboradorDao extends ConnectionFactory {
             st.setLong(6, col.getCep());
             st.setString(7, col.getCidade());
             st.setString(8, col.getEstado());
-            st.setLong(9, col.getTelefone());
+            st.setString(9, col.getTelefone());
             st.setString(10, col.getTipo());
             st.setInt(11, col.getEquipe_id());
 
@@ -70,7 +70,7 @@ public class ColaboradorDao extends ConnectionFactory {
                     c.setEstado(rs.getString("estado"));
                     c.setNome(rs.getString("nome"));
                     c.setRua(rs.getString("rua"));
-                    c.setTelefone(rs.getLong("telefone"));
+                    c.setTelefone(rs.getString("telefone"));
                     c.setSenha(rs.getString("senha"));
                     c.setUsuario(rs.getString("usuario"));
                 }
@@ -108,7 +108,7 @@ public class ColaboradorDao extends ConnectionFactory {
                     c.setEstado(rs.getString("estado"));
                     c.setNome(rs.getString("nome"));
                     c.setRua(rs.getString("rua"));
-                    c.setTelefone(rs.getLong("telefone"));
+                    c.setTelefone(rs.getString("telefone"));
                     c.setSenha(rs.getString("senha"));
                     c.setUsuario(rs.getString("usuario"));
                 }
@@ -146,7 +146,7 @@ public class ColaboradorDao extends ConnectionFactory {
                 c.setCidade(rs.getString("cidade"));
                 c.setEstado(rs.getString("estado"));
                 c.setCep(rs.getLong("cep"));
-                c.setTelefone(rs.getLong("telefone"));
+                c.setTelefone(rs.getString("telefone"));
                 // add um novo colaborador para o array list 
                 colaborador.add(c);
             }
@@ -182,7 +182,7 @@ public class ColaboradorDao extends ConnectionFactory {
             st.setLong(6, col.getCep());
             st.setString(7, col.getCidade());
             st.setString(8, col.getEstado());
-            st.setLong(9, col.getTelefone());
+            st.setString(9, col.getTelefone());
             st.setString(10, col.getTipo());
             st.setInt(11, col.getEquipe_id());
             st.setInt(12, col.getId());

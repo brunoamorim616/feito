@@ -14,7 +14,7 @@ public class Colaborador {
     private String cidade;
     private String estado;
     private Long cep;
-    private Long telefone;
+    private String telefone;
 
     public int getId() {
         return id;
@@ -104,21 +104,13 @@ public class Colaborador {
         this.cep = cep;
     }
 
-    public Long getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Long telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
-   
-
-    
-    
-   
-
-   
-    
-        
+      
 }

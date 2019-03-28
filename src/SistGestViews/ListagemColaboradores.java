@@ -428,15 +428,12 @@ public class ListagemColaboradores extends javax.swing.JPanel {
         col.setCidade(cpCidade.getText());
         col.setRua(cpRua.getText());
         col.setNome(cpNome.getText());
+        col.setTelefone(cpTelefone.getText());
         col.setId(idColaborador);
         
         String cep = cpCep.getText();
         cep = cep.replaceAll("[^0-9]", "");
-        String celular = cpTelefone.getText();
-        celular = celular.replaceAll("[^0-9]", "");
-        
         col.setCep(Long.parseLong(cep));
-        col.setTelefone(Long.parseLong(celular));
 
         //Inserção do colaborador no DB
         ColaboradorDao colDao = new ColaboradorDao();

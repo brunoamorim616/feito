@@ -96,6 +96,9 @@ public class ListagemAgendaColaborador extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        painelListagemAgendaColaborador = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblAgenda = new javax.swing.JTable();
         painelAgendaColaboradorEdicao = new javax.swing.JPanel();
         labelEnderecoEditar = new javax.swing.JLabel();
         btnEditar = new javax.swing.JButton();
@@ -107,117 +110,15 @@ public class ListagemAgendaColaborador extends javax.swing.JPanel {
         labelDataCriaEditar = new javax.swing.JLabel();
         cpDataComprEditar = new javax.swing.JFormattedTextField();
         btnEliminarCompromisso = new javax.swing.JButton();
-        painelListagemAgendaColaborador = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblAgenda = new javax.swing.JTable();
 
         setLayout(new java.awt.CardLayout());
-
-        labelEnderecoEditar.setText("Data Compromisso:");
-
-        btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
-
-        cpTituloEditar.setText("Digite o Título aqui...");
-
-        cpDescricaoEditar.setColumns(20);
-        cpDescricaoEditar.setRows(5);
-        cpDescricaoEditar.setText("Dê uma descrição aqui...\n");
-        jScrollPane2.setViewportView(cpDescricaoEditar);
-
-        labelCadastroClienteEditar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        labelCadastroClienteEditar.setText("Editar Sua Agenda");
-
-        try {
-            cpDataCriaEditar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-## ##:##:##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        labelDataCriaEditar.setText("Criada em:");
-
-        try {
-            cpDataComprEditar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-## ##:##:##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        btnEliminarCompromisso.setText("Eliminar");
-        btnEliminarCompromisso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarCompromissoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout painelAgendaColaboradorEdicaoLayout = new javax.swing.GroupLayout(painelAgendaColaboradorEdicao);
-        painelAgendaColaboradorEdicao.setLayout(painelAgendaColaboradorEdicaoLayout);
-        painelAgendaColaboradorEdicaoLayout.setHorizontalGroup(
-            painelAgendaColaboradorEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAgendaColaboradorEdicaoLayout.createSequentialGroup()
-                .addContainerGap(756, Short.MAX_VALUE)
-                .addGroup(painelAgendaColaboradorEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAgendaColaboradorEdicaoLayout.createSequentialGroup()
-                        .addComponent(btnEliminarCompromisso)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEditar)
-                        .addGap(146, 146, 146))
-                    .addGroup(painelAgendaColaboradorEdicaoLayout.createSequentialGroup()
-                        .addGroup(painelAgendaColaboradorEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelAgendaColaboradorEdicaoLayout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addComponent(labelCadastroClienteEditar))
-                            .addGroup(painelAgendaColaboradorEdicaoLayout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(cpTituloEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(94, 94, 94))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAgendaColaboradorEdicaoLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(painelAgendaColaboradorEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2)
-                    .addGroup(painelAgendaColaboradorEdicaoLayout.createSequentialGroup()
-                        .addComponent(labelDataCriaEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cpDataCriaEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 699, Short.MAX_VALUE)
-                        .addComponent(labelEnderecoEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cpDataComprEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(24, 24, 24))
-        );
-        painelAgendaColaboradorEdicaoLayout.setVerticalGroup(
-            painelAgendaColaboradorEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelAgendaColaboradorEdicaoLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(labelCadastroClienteEditar)
-                .addGap(18, 18, 18)
-                .addComponent(cpTituloEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(painelAgendaColaboradorEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cpDataComprEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelDataCriaEditar)
-                    .addComponent(labelEnderecoEditar)
-                    .addComponent(cpDataCriaEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelAgendaColaboradorEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditar)
-                    .addComponent(btnEliminarCompromisso))
-                .addGap(22, 22, 22))
-        );
-
-        add(painelAgendaColaboradorEdicao, "card3");
 
         tblAgenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "id do COmpromisso", "Data de Criação", "Data do Compromisso", "Título", "Descrição", "id do Colaborador"
+                "id do Compromisso", "Data de Criação", "Data do Compromisso", "Título", "Descrição", "id do Colaborador"
             }
         ) {
             Class[] types = new Class [] {
@@ -244,17 +145,108 @@ public class ListagemAgendaColaborador extends javax.swing.JPanel {
         painelListagemAgendaColaborador.setLayout(painelListagemAgendaColaboradorLayout);
         painelListagemAgendaColaboradorLayout.setHorizontalGroup(
             painelListagemAgendaColaboradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelListagemAgendaColaboradorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1026, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1123, Short.MAX_VALUE)
         );
         painelListagemAgendaColaboradorLayout.setVerticalGroup(
             painelListagemAgendaColaboradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
         );
 
         add(painelListagemAgendaColaborador, "card4");
+
+        labelEnderecoEditar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labelEnderecoEditar.setText("Data Compromisso:");
+
+        btnEditar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        cpTituloEditar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cpTituloEditar.setText("Digite o Título aqui...");
+
+        cpDescricaoEditar.setColumns(20);
+        cpDescricaoEditar.setRows(5);
+        cpDescricaoEditar.setText("Dê uma descrição aqui...\n");
+        jScrollPane2.setViewportView(cpDescricaoEditar);
+
+        labelCadastroClienteEditar.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        labelCadastroClienteEditar.setText("Editar Sua Agenda");
+
+        try {
+            cpDataCriaEditar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-## ##:##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        labelDataCriaEditar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labelDataCriaEditar.setText("Criada em:");
+
+        try {
+            cpDataComprEditar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-## ##:##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        btnEliminarCompromisso.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEliminarCompromisso.setText("Eliminar");
+        btnEliminarCompromisso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarCompromissoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout painelAgendaColaboradorEdicaoLayout = new javax.swing.GroupLayout(painelAgendaColaboradorEdicao);
+        painelAgendaColaboradorEdicao.setLayout(painelAgendaColaboradorEdicaoLayout);
+        painelAgendaColaboradorEdicaoLayout.setHorizontalGroup(
+            painelAgendaColaboradorEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAgendaColaboradorEdicaoLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(painelAgendaColaboradorEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelAgendaColaboradorEdicaoLayout.createSequentialGroup()
+                        .addComponent(labelCadastroClienteEditar)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAgendaColaboradorEdicaoLayout.createSequentialGroup()
+                        .addComponent(labelDataCriaEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cpDataCriaEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(labelEnderecoEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cpDataComprEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cpTituloEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminarCompromisso)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditar)
+                        .addGap(191, 191, 191)))
+                .addContainerGap())
+        );
+        painelAgendaColaboradorEdicaoLayout.setVerticalGroup(
+            painelAgendaColaboradorEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAgendaColaboradorEdicaoLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(labelCadastroClienteEditar)
+                .addGap(49, 49, 49)
+                .addGroup(painelAgendaColaboradorEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cpDataComprEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelDataCriaEditar)
+                    .addComponent(labelEnderecoEditar)
+                    .addComponent(cpDataCriaEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpTituloEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarCompromisso)
+                    .addComponent(btnEditar))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                .addGap(40, 40, 40))
+        );
+
+        add(painelAgendaColaboradorEdicao, "card3");
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblAgendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAgendaMouseClicked
