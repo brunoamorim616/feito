@@ -19,9 +19,6 @@ public class AgendaDao extends ConnectionFactory  {
     }
 
 
-      
-    
-
     // metodo para inserur dados na tabela  agenda no caso datacompromisso, titulo , descricao , colaborador e equipe id 
 
     public void inserir(Agenda agenda) throws SQLException {
@@ -56,13 +53,13 @@ public class AgendaDao extends ConnectionFactory  {
     }
     
     // Metodo para elinar dados da tabela agenda
-    public void eliminar(int colaborador_id) throws SQLException {
+    public void eliminar(int equipe_id) throws SQLException {
         // comando para o banco de dados deletar dados da tabela
-        String sql = "delete from agenda where colaborador_id = ?";
+        String sql = "delete from agenda where equipe_id = ?";
         
         // executa a linha do banco de dados
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
-            st.setInt(1, colaborador_id);
+            st.setInt(1, equipe_id);
             //executa no banco de dados
             st.execute();
             // fecha a conexao com o bando de dados

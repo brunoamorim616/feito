@@ -28,7 +28,6 @@ public class ListagemEquipe extends javax.swing.JPanel {
     //declaracao de variaveis privadas e do cardlayout
     private CardLayout cl;
     private int idEquipe;
-    private Equipe equipe;
         
     
     /**
@@ -261,12 +260,11 @@ public class ListagemEquipe extends javax.swing.JPanel {
         if (linha != -1) {
             String codigo = tblEquipe.getValueAt(linha, 0).toString();
             int codigoEquipe = this.idEquipe = Integer.parseInt(codigo);
-            
-            try {
-                this.preencherCamposEdicao(codigoEquipe);
-            } catch (SQLException ex) {
-                Logger.getLogger(ListagemColaboradores.class.getName()).log(Level.SEVERE, null, ex);
-            }
+           try {
+               this.preencherCamposEdicao(codigoEquipe);
+           } catch (SQLException ex) {
+               Logger.getLogger(ListagemEquipe.class.getName()).log(Level.SEVERE, null, ex);
+           }
             this.cl.show(this, "painelEdicao");
         }
     }//GEN-LAST:event_tblEquipeMouseClicked
@@ -318,6 +316,7 @@ public class ListagemEquipe extends javax.swing.JPanel {
                 this.limparTabela();
                 this.popularTabela();
             } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "ELIMINE OS COLABORADORES DESTA EQUIPE ANTES!!");
                 Logger.getLogger(ListagemColaboradores.class.getName()).log(Level.SEVERE, null, ex);
             }
             this.cl.show(this, "painelListagem");

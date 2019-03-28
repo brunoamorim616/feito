@@ -9,8 +9,8 @@ import SistGestDao.ColaboradorDao;
 import SistGestDao.ConnectionFactory;
 import SistGestModelo.Colaborador;
 import SistGestModelo.Equipe;
-import SistGestViews.AgendaColaborador;
-import SistGestViews.AgendaEquipe;
+import SistGestViews.AgendaColaboradorADM;
+import SistGestViews.AgendaEquipeADM;
 import SistGestViews.CadastroColaborador;
 import SistGestViews.ListagemAgendaColaborador;
 import SistGestViews.CadastroEquipe;
@@ -61,6 +61,11 @@ public class SisLojFrame extends javax.swing.JFrame {
         ListagemColaboradores list = new ListagemColaboradores();
         
         
+       
+        
+        
+        
+        
 
 
         //adiciona todas as paginas no metodo construtor
@@ -72,8 +77,10 @@ public class SisLojFrame extends javax.swing.JFrame {
         PainelPrincipal.add(cad, "cadColab");
         PainelPrincipal.add(cadeq, "cadastrarEquipe");
         
-        PainelPrincipal.add(list, "listagemColab");
+        
+        
         PainelPrincipal.add(listeq, "listarEquipe");
+        PainelPrincipal.add(list, "listagemColab");
         
         
 
@@ -533,10 +540,8 @@ public class SisLojFrame extends javax.swing.JFrame {
 
     private void btnAgendaColaborador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaColaborador1ActionPerformed
         //quando botao for pressionado ele chama outra tela no caso AgendaColaborador
-        AgendaColaborador agencolab = new AgendaColaborador(this.c);
+        AgendaColaboradorADM agencolab = new AgendaColaboradorADM();
         PainelPrincipal.add(agencolab, "agendaColaborador");
-
-       
 
         CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
         cl.show(PainelPrincipal, "agendaColaborador");
@@ -547,14 +552,11 @@ public class SisLojFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdicionarTarefa1ActionPerformed
 
     private void btnListaComproColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaComproColActionPerformed
-        //quando botao for pressionado ele chama outra tela no caso ListaComproColA
-       ListagemAgendaColaborador ag = new ListagemAgendaColaborador(this.c);
+       ListagemAgendaColaborador ag = new ListagemAgendaColaborador();
        PainelPrincipal.add(ag, "listagemAgColab");
-
-       
+       //quando botao for pressionado ele chama outra tela no caso ListaComproColA
        CardLayout cl = (CardLayout) PainelPrincipal.getLayout();
        cl.show(PainelPrincipal, "listagemAgColab");
-
     }//GEN-LAST:event_btnListaComproColActionPerformed
 
     private void btnListaComproAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaComproAdmActionPerformed
@@ -587,7 +589,7 @@ public class SisLojFrame extends javax.swing.JFrame {
 
     private void btnAgendaEquipeADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaEquipeADMActionPerformed
        //quando botao for pressionado ele chama outra tela no caso agendaEquipe
-        ListagemAgendaColaborador ag = new ListagemAgendaColaborador(this.c);
+       ListagemAgendaColaborador ag = new ListagemAgendaColaborador();
        PainelPrincipal.add(ag, "listaAgColab");
 
        

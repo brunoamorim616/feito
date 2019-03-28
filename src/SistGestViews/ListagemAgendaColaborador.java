@@ -7,6 +7,7 @@ package SistGestViews;
 
 
 import SistGestDao.AgendaDao;
+import SistGestDao.ColaboradorDao;
 import SistGestModelo.Agenda;
 import SistGestModelo.Colaborador;
 import SistGestModelo.Equipe;
@@ -26,22 +27,19 @@ import javax.swing.table.DefaultTableModel;
 //metodo para listagem da agenda do colaborador
 public class ListagemAgendaColaborador extends javax.swing.JPanel {
     private CardLayout cl;
-    private Colaborador c;
+    private int idAgendaColaborador;
     /**
      * Creates new form Agenda
      */
-    public ListagemAgendaColaborador(Colaborador colaborador) {
+    public ListagemAgendaColaborador() {
         initComponents();
-        this.c = colaborador;
 
         
         this.add(painelListagemAgendaColaborador, "painelListagemAgendaColaborador");
+        this.add(painelAgendaColaboradorEdicao, "painelAgendaEdicao");
         
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelListagemAgendaColaborador");
-        
-        this.limparTabela();
-        this.popularTabela();
     }
     
     private void popularTabela() {
@@ -49,15 +47,15 @@ public class ListagemAgendaColaborador extends javax.swing.JPanel {
         List<Agenda> Agenda;
 
         try {
-            Agenda = agendao.listaCompromisso(c.getId());
+            Agenda = agendao.listaCompromisso();
 
             DefaultTableModel model = (DefaultTableModel) tblAgenda.getModel();
             List<Object> lista = new ArrayList<Object>();
             //varre o banco de dados e seta a ordem que ira a parecer na tela 
             for (int i = 0; i < Agenda.size(); i++) {
-                Agenda c = Agenda.get(i);
-                lista.add(new Object[]{c.getDataCriacao(), c.getDataCompromisso(), c.getTitulo(),
-                    c.getDescricao(), c.getColaborador_id()});
+                Agenda ag = Agenda.get(i);
+                lista.add(new Object[]{ag.getIdAgenda(),ag.getDataCriacao(), ag.getDataCompromisso(), ag.getTitulo(),
+                    ag.getDescricao(), ag.getColaborador_id()});
                
             }
 
@@ -73,11 +71,13 @@ public class ListagemAgendaColaborador extends javax.swing.JPanel {
 
     }
     
-    private void preencherCamposEdicao(int idColaborador) throws SQLException {
+    private void preencherCamposEdicao(int idAgendaColaborador) throws SQLException {
         AgendaDao agendao = new AgendaDao();
 
-            SistGestModelo.Agenda agenda = agendao.getCompromisso(idColaborador);
+            Agenda agenda = agendao.getCompromisso(idAgendaColaborador);
             
+            cpDataCriaEditar.setText(agenda.getDataCriacao());
+            cpDataComprEditar.setText(agenda.getDataCompromisso());
             cpDescricaoEditar.setText(agenda.getDescricao());
             cpTituloEditar.setText(agenda.getTitulo());
     }
@@ -217,11 +217,11 @@ public class ListagemAgendaColaborador extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Data de Criação", "Data do Compromisso", "Título", "Descrição", "id do Colaborador"
+                "id do COmpromisso", "Data de Criação", "Data do Compromisso", "Título", "Descrição", "id do Colaborador"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -261,29 +261,63 @@ public class ListagemAgendaColaborador extends javax.swing.JPanel {
        //metodo de clique  na linha que o usuario ckicar vai abrir modo edicao
         int linha = tblAgenda.getSelectedRow();
 
-        if (linha != -1) {
-            String codigo = tblAgenda.getValueAt(linha, 0).toString();
-            int codigoColaborador = Integer.parseInt(codigo);
+        if (linha != -1) {            
             try {
-                this.preencherCamposEdicao(codigoColaborador);
+                String codigo = tblAgenda.getValueAt(linha, 0).toString();
+                int codigoAgenda = this.idAgendaColaborador = Integer.parseInt(codigo);
+                this.preencherCamposEdicao(codigoAgenda);
+                
             } catch (SQLException ex) {
                 Logger.getLogger(ListagemColaboradores.class.getName()).log(Level.SEVERE, null, ex);
             }   
-                this.add(painelAgendaColaboradorEdicao, "painelAgendaEdicao");
                 this.cl.show(this, "painelAgendaEdicao");
         }
     }//GEN-LAST:event_tblAgendaMouseClicked
 
     private void tblAgendaComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tblAgendaComponentShown
-       
+       this.limparTabela();
+       this.popularTabela();
     }//GEN-LAST:event_tblAgendaComponentShown
 
     private void btnEliminarCompromissoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCompromissoActionPerformed
-        
+         Object[] options = {"Sim", "Não"};
+        int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Deseja realmente eliminar este compromisso ?", "Atenção!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+     
+        if (opcaoSelecionada == 0) {
+            
+            AgendaDao agendao = new AgendaDao();
+            
+            try {
+                agendao.eliminar(idAgendaColaborador);              
+                this.limparTabela();
+                this.popularTabela();
+            } catch (SQLException ex) {
+                Logger.getLogger(ListagemColaboradores.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.cl.show(this, "painelListagem");
+        }
     }//GEN-LAST:event_btnEliminarCompromissoActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+        Agenda ag = new Agenda();
+        
+        ag.setIdAgenda(idAgendaColaborador);
+        ag.setDataCriacao(cpDataCriaEditar.getText());
+        ag.setDataCompromisso(cpDataComprEditar.getText());
+        ag.setTitulo(cpTituloEditar.getText());
+        ag.setDescricao(cpDescricaoEditar.getText());
+
+        //Inserção do colaborador no DB
+        AgendaDao agendao = new AgendaDao();
+        try {
+            agendao.alterar(ag);
+            this.cl.show(this, "painelListagem");
+            JOptionPane.showMessageDialog(null, "Colaborador alterado com sucesso !");
+        } catch (SQLException ex) {
+            this.cl.show(this, "painelListagem");
+            JOptionPane.showMessageDialog(null, "Falha ao alterar o colaborador !");
+            Logger.getLogger(CadastroColaborador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
 

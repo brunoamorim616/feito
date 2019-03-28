@@ -29,6 +29,7 @@ public class ListagemColaboradores extends javax.swing.JPanel {
 
     public ListagemColaboradores() {
         initComponents();
+        
 
         this.add(painelListagem, "painelListagem");
         this.add(painelEdicao, "painelEdicao");
@@ -389,11 +390,10 @@ public class ListagemColaboradores extends javax.swing.JPanel {
 
     private void tblColaboradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblColaboradorMouseClicked
         int linha = tblColaborador.getSelectedRow();
-
+        
         if (linha != -1) {
             String codigo = tblColaborador.getValueAt(linha, 0).toString();
             int codigoColaborador = this.idColaborador = Integer.parseInt(codigo);
-            
             try {
                 this.preencherCamposEdicao(codigoColaborador);
             } catch (SQLException ex) {
@@ -419,7 +419,7 @@ public class ListagemColaboradores extends javax.swing.JPanel {
         col.setCep(cpCep.getText());
         col.setRua(cpRua.getText());
         col.setNome(cpNome.getText());
-        col.setId(this.idColaborador);
+        col.setId(idColaborador);
 
         //Inserção do colaborador no DB
         ColaboradorDao colDao = new ColaboradorDao();
@@ -447,7 +447,7 @@ public class ListagemColaboradores extends javax.swing.JPanel {
             ColaboradorDao colabDao = new ColaboradorDao();
             
             try {
-                colabDao.eliminar(this.idColaborador);              
+                colabDao.eliminar(idColaborador);              
                 this.limparTabela();
                 this.popularTabela();
             } catch (SQLException ex) {
