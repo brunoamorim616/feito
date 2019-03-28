@@ -262,6 +262,7 @@ public class CadastroColaborador extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Falha ao inserir colaborador !");
             Logger.getLogger(CadastroColaborador.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void cpNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpNomeActionPerformed

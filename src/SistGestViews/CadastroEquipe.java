@@ -22,7 +22,11 @@ public class CadastroEquipe extends javax.swing.JPanel {
      */
     public CadastroEquipe() {
         initComponents();
+        
+        
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -117,18 +121,26 @@ public class CadastroEquipe extends javax.swing.JPanel {
        
         //linka uma pagina
         Equipe eq = new Equipe();
+        
         //puxa os dados do campo e seta em variaveis
+        
         eq.setNome(cpNomeEquipe.getText());
         eq.setDescricao(cpDescricaoEquipe.getText());
 
         //Inserção da equipe no DB
         EquipeDao eqdao = new EquipeDao();
+        
         try {
             eqdao.inserir(eq);
-            JOptionPane.showMessageDialog(null, "Colaborador inserido com sucesso !");
-            this.cl.show(this, "");
+            
+            
+            JOptionPane.showMessageDialog(null, "Equipe inserida com sucesso !");
+            
+                      
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao inserir colaborador !");
+            
         }
     }//GEN-LAST:event_btnSalvarEquipeActionPerformed
 

@@ -36,6 +36,9 @@ public class ListagemColaboradores extends javax.swing.JPanel {
 
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelListagem");
+        
+        this.limparTabela();
+        this.popularTabela();
     }
 
     private void popularTabela() {
@@ -425,13 +428,18 @@ public class ListagemColaboradores extends javax.swing.JPanel {
         ColaboradorDao colDao = new ColaboradorDao();
         try {
             colDao.alterar(col);
-            this.cl.show(this, "painelListagem");
+            this.cl.show(this, "painelListagem");            
+            this.limparTabela();
+            this.popularTabela();
             JOptionPane.showMessageDialog(null, "Colaborador alterado com sucesso !");
         } catch (SQLException ex) {
+            this.limparTabela();
+            this.popularTabela();
             this.cl.show(this, "painelListagem");
             JOptionPane.showMessageDialog(null, "Falha ao alterar o colaborador !");
             Logger.getLogger(CadastroColaborador.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void cpNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpNomeActionPerformed
@@ -454,11 +462,15 @@ public class ListagemColaboradores extends javax.swing.JPanel {
                 Logger.getLogger(ListagemColaboradores.class.getName()).log(Level.SEVERE, null, ex);
             }
             this.cl.show(this, "painelListagem");
+            this.limparTabela();
+            this.popularTabela();
         }
     }//GEN-LAST:event_btnEliminarColaboradorActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         //quando botao cancel for precionado volta para o painel listagem
+        this.limparTabela();
+        this.popularTabela();
         this.cl.show(this, "painelListagem");
     }//GEN-LAST:event_btnCancelarActionPerformed
 
